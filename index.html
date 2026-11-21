@@ -140,6 +140,7 @@ nav.pc .btn{padding:.5em 1.2em;font-size:.88rem}
 .clients::before{content:"";position:absolute;inset:0;border-top:1.6px solid var(--ink);border-bottom:1.6px solid var(--ink);pointer-events:none}
 .clients small{font-size:.8rem;color:var(--sub);font-weight:700;letter-spacing:.12em;margin-right:8px}
 .clients b{font-weight:700;font-size:1.15rem}
+@media (max-width:600px){.clients{gap:6px 24px}.clients small{flex-basis:100%;margin-right:0}} /* スマホでは「主要取引先」の下に社名を並べる */
 
 /* ---------- 社風（帯の色の上に白いノート） ---------- */
 .b-cul .sec-label{color:var(--cul-label)}
