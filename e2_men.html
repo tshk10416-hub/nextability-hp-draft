@@ -114,15 +114,16 @@ footer{font-size:.84rem}
 @media (max-width:420px){.logo img{height:30px}}
 
 :root{--sans:"M PLUS 1",sans-serif;--head:0px}
-.wrap{width:min(1180px,100% - 96px);margin-inline:auto}
+.wrap{width:min(1400px,100% - 96px);margin-inline:auto}
 header{position:absolute;left:0;right:0;top:0;z-index:30}
-.hd{height:104px;padding:0 48px}
-.hd nav{display:flex;align-items:center;gap:min(26px,1.8vw);font-size:.88rem;font-weight:500;color:#fff;width:48%;box-sizing:border-box;margin-right:-48px;padding:0 48px 0 44px;white-space:nowrap}
+.hd{position:relative;height:104px;padding:0 max(48px,calc((100% - 1400px)/2))}
+.hd nav{display:flex;align-items:center;gap:min(26px,1.8vw);font-size:.88rem;font-weight:500;color:#fff;position:absolute;left:52%;right:0;top:0;height:100%;padding:0 max(48px,calc((100% - 1400px)/2)) 0 44px;white-space:nowrap}
 .hd nav a:hover{text-decoration:underline;text-underline-offset:8px}
 .hd nav .ask{margin-left:auto;border:1px solid #fff;padding:7px 14px}
 .hd nav .ask:hover{background:#fff;color:var(--navy);text-decoration:none}
+.hero,.panels{container-type:inline-size}
 .hero{display:grid;grid-template-columns:52fr 48fr;min-height:min(860px,100svh)}
-.hero .l{display:flex;flex-direction:column;justify-content:center;padding:130px 48px 80px max(48px,calc((100vw - 1400px)/2))}
+.hero .l{display:flex;flex-direction:column;justify-content:center;padding:130px 48px 80px max(48px,calc((100cqw - 1400px)/2))}
 .hero h1{font-weight:600;font-size:clamp(2.1rem,3.9vw,3.7rem);line-height:1.55;letter-spacing:.02em;color:var(--navy);white-space:nowrap}
 .hero p{max-width:31em;margin-top:34px;font-size:.96rem;line-height:2.05}
 .hero .r{position:relative;background:var(--navy);overflow:hidden}
@@ -136,6 +137,7 @@ h2{font-weight:600;font-size:clamp(1.7rem,2.7vw,2.3rem);line-height:1.55;color:v
 .panel{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;text-align:left;font:inherit;color:var(--navy);border:0;padding:44px;cursor:pointer;transition:flex-grow .6s cubic-bezier(.2,.7,.2,1)}
 .panel:hover,.panel:focus-visible{flex-grow:1.28}
 .panel:focus-visible{outline-offset:-6px}
+@media (min-width:901px){.panel:first-child{padding-left:max(48px,calc((100cqw - 1400px)/2))}}
 .panel:nth-child(3n+1),#s-unso{--sbg:#E6F1F8;background:#E6F1F8}
 .panel:nth-child(3n+2),#s-web{--sbg:#D3E6F3;background:#D3E6F3}
 .panel:nth-child(3n+3),#s-fp{--sbg:#BFDBED;background:#BFDBED}
