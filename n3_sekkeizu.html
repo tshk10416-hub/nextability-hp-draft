@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* ノート改 案3 設計図：手書きノートの構成はそのまま、配色を落ち着かせ、Web事業を主役に（2026-11-28） */
+/* ノート改 案3 工夫の案内：手書きノートの構成はそのまま、配色を落ち着かせ、Web事業を主役に（2026-11-28） */
 :root{
   --ink:#1D3236;       /* ロゴの文字色 */
   --sub:#55636A;
@@ -425,54 +425,51 @@ body.lock{overflow:hidden}
   .s-cards{grid-template-columns:1fr 1fr 1fr;gap:3cqw}.s-cards div{font-size:3cqw}.s-cards div span{font-size:2.7cqw}
 }
 
-/* ===== 案3 設計図：LINE公式アカウントの見本 ===== */
+/* ===== 案3 LINE公式アカウントの見本 ===== */
 .chat-wrap{display:grid;grid-template-columns:minmax(0,330px) 1fr;gap:64px;align-items:center;margin-top:44px}
-.phone{position:relative;height:560px;display:flex;flex-direction:column;background:#FDFDFB;border:1.8px solid var(--ink);border-radius:36px;padding:12px 9px 14px;box-shadow:0 2px 3px rgba(0,0,0,.08),0 22px 40px rgba(20,40,60,.16)}
+.phone{position:relative;height:600px;display:flex;flex-direction:column;background:#FDFDFB;border:1.8px solid var(--ink);border-radius:36px;padding:12px 9px 14px;box-shadow:0 2px 3px rgba(0,0,0,.08),0 22px 40px rgba(20,40,60,.16)}
 .phone::before{content:"";position:absolute;top:12px;left:50%;width:84px;height:18px;margin-left:-42px;border-radius:0 0 12px 12px;background:var(--ink)}
 .ph-top{padding:26px 10px 10px;text-align:center;border-bottom:1px solid var(--rule);line-height:1.5}
 .ph-top b{display:block;font-size:.95rem}
 .ph-top small{font-size:.72rem;color:var(--sub)}
 .chat{flex:1;overflow-y:auto;padding:14px 8px;display:flex;flex-direction:column;gap:9px;background:#E8EDF1;scroll-behavior:smooth}
-.msg{max-width:80%;padding:8px 12px;border-radius:16px;font-size:.86rem;line-height:1.6;animation:msgin .35s cubic-bezier(.3,1.4,.5,1) both;transform-origin:0 100%}
+.msg{flex:none;max-width:80%;padding:8px 12px;border-radius:16px;font-size:.86rem;line-height:1.6;animation:msgin .35s cubic-bezier(.3,1.4,.5,1) both;transform-origin:0 100%}
 .msg.shop{align-self:flex-start;background:#fff;border-top-left-radius:4px}
 .msg.me{align-self:flex-end;background:#CFDDEA;border-top-right-radius:4px;transform-origin:100% 100%}
-.msg.card{padding:0;overflow:hidden;width:78%}
-.msg.card i{display:block;height:92px;background:radial-gradient(circle at 60% 55%,#EDE4D8 0 16%,#B08E6E 16.5% 22%,transparent 22.5%),linear-gradient(160deg,#C9B39C,#8F725C)}
-.msg.card b{display:block;padding:8px 12px 0}
-.msg.card span{display:block;padding:0 12px 10px;color:var(--sub);font-size:.8rem}
-.typing{align-self:flex-start;display:flex;gap:4px;background:#fff;border-radius:16px;border-top-left-radius:4px;padding:11px 12px}
+.msg.card{padding:0;overflow:hidden;width:82%;max-width:82%;border-radius:14px}
+.msg.card i{display:block;height:104px;background:radial-gradient(circle at 50% 58%,#F3ECE2 0 18%,#9B7457 18.5% 24%,transparent 24.5%),radial-gradient(ellipse 34% 20% at 50% 66%,#E7DDD0 0 70%,transparent 72%),linear-gradient(160deg,#C9B39C,#8F725C)}
+.msg.card small{display:block;padding:10px 14px 0;font-size:.7rem;font-weight:700;color:var(--label);letter-spacing:.06em}
+.msg.card b{display:block;padding:2px 14px 0;font-size:.95rem;line-height:1.5}
+.msg.card span{display:block;padding:4px 14px 12px;color:var(--sub);font-size:.8rem;line-height:1.6}
+.msg.card em{display:block;font-style:normal;text-align:center;font-weight:700;font-size:.82rem;color:var(--pen);border-top:1px solid #E3E6E8;padding:10px}
+.typing{flex:none;align-self:flex-start;display:flex;gap:4px;background:#fff;border-radius:16px;border-top-left-radius:4px;padding:11px 12px}
 .typing i{width:6px;height:6px;border-radius:50%;background:#9AA3AA;animation:dot 1s infinite}
 .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
 @keyframes dot{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
 @keyframes msgin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
-.qr{display:flex;gap:6px;overflow-x:auto;padding:10px 4px 2px;min-height:48px;scrollbar-width:none}
-.qr button{flex:none;font:700 .8rem var(--body);color:var(--pen);background:#fff;border:1.4px solid var(--pen);border-radius:999px;padding:.45em .95em;cursor:pointer;animation:msgin .3s ease both}
+.qr{display:flex;flex-wrap:wrap;gap:6px;padding:10px 4px 2px;min-height:86px;align-content:flex-start}
+.qr button{font:700 .8rem var(--body);color:var(--pen);background:#fff;border:1.4px solid var(--pen);border-radius:999px;padding:.45em .9em;cursor:pointer;animation:msgin .3s ease both}
 .qr button:focus-visible{outline:3px dashed var(--pen);outline-offset:2px}
 .chat-side h3{font-family:var(--hand);font-weight:600;font-size:clamp(1.3rem,2.6vw,1.7rem);line-height:1.5;color:var(--pen);margin-bottom:14px}
 .chat-side p{color:var(--sub);margin-bottom:12px;max-width:32em}
-.bp-hint{font-family:var(--hand);color:var(--circle)!important}
-@media (max-width:860px){.chat-wrap{grid-template-columns:1fr;gap:28px}.phone{width:min(330px,100%);margin-inline:auto;height:520px}.chat-side{order:-1}}
+.chat-side .btn{margin-top:6px}
+@media (max-width:860px){.chat-wrap{grid-template-columns:1fr;gap:28px}.phone{width:min(330px,100%);margin-inline:auto;height:580px}.chat-side{order:-1}}
 
-/* ===== 案3 設計図：このページの寸法と書体を重ねて見る ===== */
-.bp-btn{position:fixed;right:18px;bottom:18px;z-index:95;display:flex;align-items:center;gap:8px;font:700 .86rem var(--body);color:#fff;background:#23477A;border:0;border-radius:999px;padding:11px 18px 11px 14px;box-shadow:0 8px 22px rgba(20,40,80,.3);cursor:pointer;transition:background .3s,color .3s}
-.bp-btn svg{width:20px;height:20px}
-.bp-btn:focus-visible{outline:3px dashed #23477A;outline-offset:3px}
-body.bp .bp-btn{background:#fff;color:#23477A}
-.bp-grid{position:fixed;inset:0;z-index:88;pointer-events:none;opacity:0;transition:opacity .5s;background-image:linear-gradient(rgba(35,71,122,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(35,71,122,.13) 1px,transparent 1px),linear-gradient(rgba(35,71,122,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(35,71,122,.06) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px;background-color:rgba(226,234,245,.28)}
-.bp-cols{position:absolute;top:0;bottom:0;left:50%;width:min(1080px,100% - 40px);translate:-50% 0;display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
-.bp-cols i{background:rgba(35,71,122,.05);border-inline:1px dashed rgba(35,71,122,.22)}
-@media (max-width:760px){.bp-cols{grid-template-columns:repeat(4,1fr);gap:12px}.bp-cols i:nth-child(n+5){display:none}}
-body.bp .bp-grid{opacity:1}
-.bp-layer{position:absolute;left:0;top:0;width:100%;z-index:90;pointer-events:none;opacity:0;transition:opacity .45s}
-body.bp .bp-layer{opacity:1}
-.bp-box{position:absolute;border:1.3px dashed #2F5D8A;clip-path:inset(0 100% 100% 0);transition:clip-path .7s cubic-bezier(.6,0,.2,1);transition-delay:var(--dl,0s)}
-body.bp .bp-box{clip-path:inset(-40px -400px -40px -40px)}
-.bp-box.sec{border:1.3px solid rgba(47,93,138,.55)}
-.bp-pad{position:absolute;left:0;right:0;background:repeating-linear-gradient(45deg,rgba(47,93,138,.16) 0 2px,transparent 2px 8px)}
-.bp-pad b{position:absolute;right:10px;top:50%;translate:0 -50%;font:700 .66rem/1 var(--body);color:#23477A;background:rgba(255,255,255,.85);padding:3px 6px;border-radius:3px}
-.bp-tag{position:absolute;left:-1.3px;bottom:100%;background:#23477A;color:#fff;font:600 .68rem/1.5 var(--body);font-variant-numeric:tabular-nums;padding:2px 8px;white-space:nowrap;border-radius:3px 3px 0 0}
-.bp-box.sec > .bp-tag{bottom:auto;top:0;border-radius:0 0 3px 0}
-@media (prefers-reduced-motion:reduce){.bp-box{transition:none}}
+/* ===== 案3 このページの工夫を、順番に案内する ===== */
+.tour-block{position:fixed;inset:0;z-index:119}
+.tour-spot{position:absolute;z-index:120;border-radius:12px;box-shadow:0 0 0 3px #fff,0 0 0 300vmax rgba(18,28,44,.6);pointer-events:none;transition:left .55s cubic-bezier(.6,0,.2,1),top .55s cubic-bezier(.6,0,.2,1),width .55s cubic-bezier(.6,0,.2,1),height .55s cubic-bezier(.6,0,.2,1)}
+.tour-card{position:fixed;z-index:121;left:28px;bottom:28px;width:min(420px,100% - 32px);background:#FBFBF8;color:var(--ink);border-radius:12px;padding:20px 22px 16px;box-shadow:0 18px 44px rgba(0,0,0,.35);animation:msgin .35s ease both}
+.tour-card .t-no{font-size:.78rem;font-weight:700;color:var(--label)}
+.tour-card h3{font-family:var(--hand);font-weight:600;font-size:1.35rem;line-height:1.5;color:var(--pen);margin:2px 0 8px}
+.tour-card p{font-size:.94rem;line-height:1.8}
+.t-nav{display:flex;justify-content:space-between;align-items:center;margin-top:14px;gap:10px}
+.t-prev{font:700 .88rem var(--body);color:var(--sub);background:none;border:0;cursor:pointer;padding:8px 4px}
+.t-prev:disabled{visibility:hidden}
+.t-close{position:absolute;right:10px;top:8px;width:36px;height:36px;border:0;background:none;font-size:1.4rem;color:var(--sub);cursor:pointer}
+.tour-card button:focus-visible{outline:3px dashed var(--pen);outline-offset:2px}
+.t-dots{display:flex;gap:5px}.t-dots i{width:6px;height:6px;border-radius:50%;background:#C9CED2}.t-dots i.on{background:var(--pen)}
+@media (max-width:600px){.tour-card{left:10px;right:10px;bottom:10px;width:auto;padding:16px 18px 12px}.tour-card h3{font-size:1.2rem}.tour-card p{font-size:.9rem}}
+@media (prefers-reduced-motion:reduce){.tour-spot{transition:none}}
 .review-note{background:#1D3236;color:#EAF1F4;font:500 .8rem var(--body);text-align:center;padding:7px 16px;line-height:1.6}
 </style>
 </head>
@@ -523,7 +520,7 @@ body.bp .bp-box{clip-path:inset(-40px -400px -40px -40px)}
     <div class="wrap">
       <p class="sec-label rise">WEB</p>
       <h2 class="sec-title rise">ホームページも、SNSも、<br>LINEも。</h2>
-      <p class="sec-lead rise">AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成を低コストで提供しています。</p>
+      <p class="sec-lead rise">AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成を低コストで提供しています。どれも、ヒアリングをもとに、お客様ごとにオーダーメイドでつくります。</p>
       <div class="chat-wrap">
         <div class="phone">
           <div class="ph-top"><b>こもれび珈琲</b><small>LINE公式アカウント <span class="sample-tag">見本</span></small></div>
@@ -533,7 +530,8 @@ body.bp .bp-box{clip-path:inset(-40px -400px -40px -40px)}
         <div class="chat-side">
           <h3>下のボタンを、押してみてください。</h3>
           <p>LINE公式アカウントでは、お知らせの配信や、よくある質問への自動の返信ができます。左は見本のお店のアカウントです。</p>
-          <p class="bp-hint">このページの寸法や書体は、右下の「設計図」ボタンから見られます。</p>
+          <p>このページにも、見せ方の工夫をいくつか入れています。順番にご案内します。</p>
+          <button class="btn line" type="button" id="tourBtn">このページの工夫を見る</button>
         </div>
       </div>
       <ul class="svc">
@@ -917,12 +915,12 @@ body.bp .bp-box{clip-path:inset(-40px -400px -40px -40px)}
     const A = {
       '営業時間は？': ['8:00〜18:00です。', '水曜日はお休みをいただいています。'],
       '席を予約したい': ['ご希望の日にち・時間・人数を送ってください。', '空きを確認して、お返事します。'],
-      '今月のお知らせ': [{card: ['季節のタルト、はじめました', '今月末までの限定です。']}],
+      '今月のお知らせ': ['今月のお知らせをお送りします。', {card: ['今月のお知らせ', '季節のタルト、はじめました', '洋梨とくるみのタルトを、今月末までの限定でご用意しています。', '詳しく見る']}],
       'お店の場所は？': ['〇〇駅から歩いて5分です。', '駐車場は3台あります。'],
     };
     const add = (m, who) => {
       const d = document.createElement('div');
-      if (m.card) { d.className = 'msg shop card'; d.innerHTML = '<i></i><b>' + m.card[0] + '</b><span>' + m.card[1] + '</span>'; }
+      if (m.card) { d.className = 'msg shop card'; d.innerHTML = '<i></i><small>' + m.card[0] + '</small><b>' + m.card[1] + '</b><span>' + m.card[2] + '</span><em>' + m.card[3] + '</em>'; }
       else { d.className = 'msg ' + who; d.textContent = m; }
       chat.append(d); chat.scrollTop = chat.scrollHeight;
     };
@@ -943,51 +941,59 @@ body.bp .bp-box{clip-path:inset(-40px -400px -40px -40px)}
     }, {threshold: .45}).observe(chat);
   })();
 
-  /* ===== 案3：このページの設計図を重ねる ===== */
+  /* ===== 案3：このページの工夫を、順番に案内する ===== */
   (() => {
-    const btn = document.createElement('button');
-    btn.className = 'bp-btn'; btn.type = 'button'; btn.setAttribute('aria-pressed', 'false');
-    btn.innerHTML = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 15.5L15.5 3l1.5 1.5L4.5 17H3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 12.5l1.5 1.5M8.5 10l1 1M11 7.5l1.5 1.5M13.5 5l1 1" stroke="currentColor" stroke-width="1.3"/></svg><span>設計図</span>';
-    const grid = document.createElement('div'); grid.className = 'bp-grid'; grid.setAttribute('aria-hidden', 'true');
-    grid.innerHTML = '<div class="bp-cols">' + '<i></i>'.repeat(12) + '</div>';
-    const lay = document.createElement('div'); lay.className = 'bp-layer'; lay.setAttribute('aria-hidden', 'true');
-    document.body.append(grid, lay, btn);
-    const fam = el => getComputedStyle(el).fontFamily.split(',')[0].replace(/["']/g, '');
-    const px = v => Math.round(parseFloat(v));
-    const NAME = [['.pola .ph', '写真枠'], ['.ball', '事業のボタン'], ['.phone', 'LINEの見本'], ['.notebook', 'ノート'], ['.postcard', 'お問い合わせフォーム'], ['.job', '募集カード']];
-    const draw = () => {
-      lay.innerHTML = ''; lay.style.height = document.documentElement.scrollHeight + 'px';
-      const box = (el, text, cls, n) => {
-        const r = el.getBoundingClientRect(); if (!r.width || !r.height) return null;
-        const b = document.createElement('div'); b.className = 'bp-box' + (cls ? ' ' + cls : '');
-        Object.assign(b.style, {left: r.left + scrollX + 'px', top: r.top + scrollY + 'px', width: r.width + 'px', height: r.height + 'px'});
-        b.style.setProperty('--dl', Math.min(n, 30) * .025 + 's');
-        const t = document.createElement('span'); t.className = 'bp-tag'; t.textContent = text; b.append(t);
-        lay.append(b); return b;
-      };
-      let n = 0;
-      document.querySelectorAll('main .band').forEach(s => {
-        const c = getComputedStyle(s), b = box(s, (s.id ? '#' + s.id : '#top') + '　幅 ' + Math.round(s.getBoundingClientRect().width) + 'px', 'sec', n++);
-        if (!b) return;
-        [['top', c.paddingTop], ['bottom', c.paddingBottom]].forEach(([k, v]) => {
-          const p = document.createElement('div'); p.className = 'bp-pad'; p.style[k] = 0; p.style.height = v; p.innerHTML = '<b>余白 ' + px(v) + 'px</b>'; b.append(p);
-        });
-      });
-      document.querySelectorAll('.hero h1, main h2').forEach(h => {
-        const c = getComputedStyle(h); box(h, '見出し　' + fam(h) + '　' + c.fontWeight + '　' + px(c.fontSize) + 'px／行間 ' + (parseFloat(c.lineHeight) / parseFloat(c.fontSize)).toFixed(1), '', n++);
-      });
-      document.querySelectorAll('.sec-lead, .hero .lead').forEach(p => { const c = getComputedStyle(p); box(p, '本文　' + fam(p) + '　' + px(c.fontSize) + 'px', '', n++); });
-      NAME.forEach(([s, name]) => document.querySelectorAll(s).forEach(el => { const r = el.getBoundingClientRect(); box(el, name + '　' + Math.round(r.width) + '×' + Math.round(r.height), '', n++); }));
-      document.querySelectorAll('main .btn').forEach(el => { const r = el.getBoundingClientRect(); box(el, 'ボタン　高さ ' + Math.round(r.height) + 'px', '', n++); });
+    const T = [
+      ['.hero h1', '手書きの書体', '見出しは、ノートに手で書いたような書体にしています。会社のページを、身近に感じてもらうためです。'],
+      ['.circled', '一筆で描く丸', '「増やせる。」を囲む丸は、ページを開いたあとに、ペンで描くように現れます。'],
+      ['#web .sec-title', '紙を重ねた区切り', '項目の境目は、破った紙を重ねたような形にしています。ノートを一枚ずつめくるように読めます。'],
+      ['.phone', '動く見本', 'LINE公式アカウントで何ができるかを、説明ではなく、実際に押して試せる見本にしました。'],
+      ['.ball.main', '押すと広がる事業', '事業のボールを押すと、その位置から円が広がって、詳しい説明が画面いっぱいに開きます。'],
+      ['.notebook', 'チェックが入るノート', 'このノートは、画面に入ると一つずつチェックが入ります。社員の「できる」が増えていく様子を表しています。'],
+      ['.postcard', 'ハガキの形のフォーム', 'お問い合わせは、ハガキを書くような形に。最後に「おたより」の消印が押されます。'],
+    ];
+    const END = 'このような見せ方を、お客様のお話をうかがいながら、一つずつ考えてつくります。';
+    let i = -1, spot, card, block, opener;
+    const target = () => document.querySelector(T[i][0]);
+    const place = () => {
+      const el = target(); if (!el) return; const r = el.getBoundingClientRect(), p = 10;
+      Object.assign(spot.style, {left: r.left + scrollX - p + 'px', top: r.top + scrollY - p + 'px', width: r.width + p * 2 + 'px', height: r.height + p * 2 + 'px'});
     };
-    const on = v => {
-      document.body.classList.toggle('bp', v); btn.setAttribute('aria-pressed', v);
-      btn.querySelector('span').textContent = v ? '設計図を閉じる' : '設計図';
-      if (v) { document.querySelectorAll('.fx, .fxh, [class*="ill-"]').forEach(el => el.classList.add('in')); requestAnimationFrame(() => requestAnimationFrame(draw)); }
+    const show = n => {
+      i = n; const el = target();
+      document.querySelectorAll('.fx, .fxh, [class*="ill-"]').forEach(x => x.classList.add('in'));
+      if (T[i][0] === '.circled') { const d = el.querySelector('.draw'); d.classList.remove('in'); void d.offsetWidth; setTimeout(() => d.classList.add('in'), 500); }
+      const cardH = card.offsetHeight, r = el.getBoundingClientRect(), small = innerWidth < 600;
+      const room = innerHeight - (small ? cardH + 30 : 40) - 90;
+      const y = r.top + scrollY - 90 - Math.max(0, (room - r.height) / 2);
+      scrollTo({top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth'});
+      const last = i === T.length - 1;
+      card.innerHTML = '<p class="t-no">' + (i + 1) + ' / ' + T.length + '</p><h3>' + T[i][1] + '</h3><p>' + T[i][2] + (last ? '<br><br>' + END : '') + '</p>' +
+        '<div class="t-nav"><button type="button" class="t-prev"' + (i ? '' : ' disabled') + '>← 前へ</button><span class="t-dots">' + T.map((_, j) => '<i class="' + (j === i ? 'on' : '') + '"></i>').join('') + '</span>' +
+        '<button type="button" class="btn t-next">' + (last ? '終わる' : '次へ') + '</button></div><button type="button" class="t-close" aria-label="案内を閉じる">×</button>';
+      card.querySelector('.t-next').focus({preventScroll: true});
+      place(); setTimeout(place, 450); setTimeout(place, 900);
     };
-    btn.addEventListener('click', () => on(!document.body.classList.contains('bp')));
-    let rt; addEventListener('resize', () => { if (!document.body.classList.contains('bp')) return; clearTimeout(rt); rt = setTimeout(draw, 150); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('bp') && !document.querySelector('.sheet.open')) on(false); });
+    const end = () => { [spot, card, block].forEach(x => x && x.remove()); spot = card = block = null; i = -1; opener && opener.focus({preventScroll: true}); };
+    const start = () => {
+      opener = $('#tourBtn');
+      block = document.createElement('div'); block.className = 'tour-block';
+      spot = document.createElement('div'); spot.className = 'tour-spot';
+      card = document.createElement('div'); card.className = 'tour-card'; card.setAttribute('role', 'dialog'); card.setAttribute('aria-label', 'このページの工夫');
+      document.body.append(block, spot, card);
+      card.addEventListener('click', e => {
+        if (e.target.closest('.t-close')) end();
+        else if (e.target.closest('.t-prev')) show(i - 1);
+        else if (e.target.closest('.t-next')) i === T.length - 1 ? end() : show(i + 1);
+      });
+      show(0);
+    };
+    $('#tourBtn').addEventListener('click', start);
+    addEventListener('resize', () => { if (spot) place(); });
+    document.addEventListener('keydown', e => {
+      if (!card) return;
+      if (e.key === 'Escape') end(); else if (e.key === 'ArrowRight' && i < T.length - 1) show(i + 1); else if (e.key === 'ArrowLeft' && i > 0) show(i - 1);
+    });
   })();
 })();
 </script>

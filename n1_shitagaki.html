@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* ノート改 案1 下書き：手書きノートの構成はそのまま、配色を落ち着かせ、Web事業を主役に（2026-11-28） */
+/* ノート改 案1 ヒアリングメモ：手書きノートの構成はそのまま、配色を落ち着かせ、Web事業を主役に（2026-11-28） */
 :root{
   --ink:#1D3236;       /* ロゴの文字色 */
   --sub:#55636A;
@@ -425,48 +425,39 @@ body.lock{overflow:hidden}
   .s-cards{grid-template-columns:1fr 1fr 1fr;gap:3cqw}.s-cards div{font-size:3cqw}.s-cards div span{font-size:2.7cqw}
 }
 
-/* ===== 案1 下書き：下書きと完成を見比べる ===== */
-.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.draft{position:relative;margin-top:44px}
 .browser{background:#FDFDFB;border:1.6px solid var(--ink);border-radius:10px;overflow:hidden;box-shadow:0 2px 3px rgba(0,0,0,.08),0 18px 36px rgba(20,40,60,.12)}
-.bar{display:flex;align-items:center;gap:6px;padding:9px 14px;border-bottom:1.6px solid var(--ink);background:#F2F3F1}
-.bar i{width:10px;height:10px;border-radius:50%;border:1.4px solid var(--ink);flex:none}
-.bar .url{margin-left:12px;min-width:0;max-width:360px;flex:1;font-size:.74rem;color:var(--sub);background:#fff;border:1px solid var(--rule);border-radius:999px;padding:1px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.stage{position:relative;container-type:inline-size;aspect-ratio:16/9.6;overflow:hidden;touch-action:pan-y;cursor:ew-resize;user-select:none;-webkit-user-select:none}
-@media (max-width:600px){.stage{aspect-ratio:3/4.3}}
-.site{position:absolute;inset:0}
-.wire{clip-path:inset(0 calc(100% - var(--p) * 1%) 0 0);background-color:#FBFBF8;background-image:linear-gradient(rgba(79,127,163,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(79,127,163,.12) 1px,transparent 1px);background-size:22px 22px}
-.wire .s-in{background:none;color:transparent;-webkit-mask:linear-gradient(#000,#000) 0 0/100% var(--draw,0%) no-repeat;mask:linear-gradient(#000,#000) 0 0/100% var(--draw,0%) no-repeat}
-.wire .s-h{border-bottom:1.6px solid #6E747A}
-.wire [data-w]{position:relative;color:transparent!important;background:none!important;border:1.6px solid #6E747A;border-radius:5px}
-.wire [data-w]::after{content:attr(data-w);position:absolute;inset:0;display:grid;place-items:center;font:600 1.45cqw/1.2 var(--hand);color:#525A62;text-align:center;white-space:nowrap}
-.wire .s-copy strong[data-w]::after{font-size:2.2cqw}
-.wire .lines[data-w]{border:0;background:repeating-linear-gradient(transparent 0 1.1em,#9AA0A6 1.1em calc(1.1em + 1.6px))!important}
-.wire .lines[data-w]::after{content:none}
-.wire .s-img[data-w]{background:linear-gradient(to top right,transparent calc(50% - 1px),#8A9097 calc(50% - .5px),#8A9097 calc(50% + .5px),transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#8A9097 calc(50% - .5px),#8A9097 calc(50% + .5px),transparent calc(50% + 1px))!important}
-.wire .s-img[data-w]::after{font-size:2cqw;color:#525A62;background:none}
-.wire .s-cards div{border:1.6px solid #6E747A!important;border-radius:5px;min-height:5cqw}
-.wire .s-cards div span{display:none}
-.w-note{position:absolute;font:600 1.35cqw/1.45 var(--hand);color:var(--circle);white-space:nowrap}
-.w-note.n1{left:30cqw;top:2.6cqw}
-.w-note.n2{right:6cqw;bottom:12.5cqw;text-align:right}
-.w-note.n3{left:4.4cqw;bottom:12cqw}
-@container (max-width:520px){
-  .wire [data-w]::after{font-size:3.2cqw}.wire .s-copy strong[data-w]::after{font-size:4.2cqw}.wire .s-img[data-w]::after{font-size:4.4cqw}
-  .w-note{font-size:3cqw}.w-note.n1{left:auto;right:5.5cqw;top:4cqw;white-space:normal;width:24cqw;text-align:right}
-  .w-note.n2{right:8cqw;bottom:auto;top:20cqw}.w-note.n3{left:auto;right:5.5cqw;bottom:20cqw}
-  .wire .s-cards div{min-height:11cqw}
+.bar{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1.6px solid var(--ink);background:#F2F3F1}
+.bar i{width:9px;height:9px;border-radius:50%;border:1.4px solid var(--ink);flex:none}
+.bar .url{margin-left:10px;min-width:0;max-width:340px;flex:1;font-size:.72rem;color:var(--sub);background:#fff;border:1px solid var(--rule);border-radius:999px;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stage{position:relative;container-type:inline-size;aspect-ratio:16/10.4;overflow:hidden}
+
+/* ===== 案1 ヒアリングメモ ===== */
+.hear{display:grid;grid-template-columns:minmax(0,380px) 1fr;gap:44px;align-items:start;margin-top:44px}
+.pad{position:relative;background-color:#FCFCF8;background-image:repeating-linear-gradient(transparent 0 35px,#D6DCE0 35px 36px);padding:22px 22px 26px 46px;box-shadow:0 2px 3px rgba(0,0,0,.1),0 14px 28px rgba(20,40,60,.12)}
+.pad::before{content:"";position:absolute;top:0;bottom:0;left:30px;width:1.5px;background:var(--wave);opacity:.6}
+.pad-h{font-family:var(--hand);font-weight:600;color:var(--pen);font-size:1.15rem;line-height:36px;margin-bottom:6px}
+.notes{list-style:none;display:grid;gap:8px}
+.notes button{position:relative;display:block;width:100%;text-align:left;font:600 1.02rem/1.65 var(--hand);color:#33332D;background:none;border:0;border-radius:6px;padding:8px 10px 10px 34px;cursor:pointer;transition:background .25s}
+.notes button small{display:block;font:500 .7rem/1.5 var(--body);color:var(--sub);letter-spacing:.06em}
+.notes button::before{content:"";position:absolute;left:8px;top:16px;width:16px;height:16px;border:1.6px solid #6E747A;border-radius:50%;transition:background .25s,border-color .25s}
+.notes button:hover{background:rgba(255,255,255,.7)}
+.notes button[aria-pressed="true"]{background:linear-gradient(100deg,transparent 1%,var(--marker) 3%,var(--marker) 97%,transparent 99%)}
+.notes button[aria-pressed="true"]::before{background:var(--circle);border-color:var(--circle);box-shadow:inset 0 0 0 3px #fff}
+.notes button:focus-visible{outline:3px dashed var(--pen);outline-offset:2px}
+.ring{position:absolute;z-index:3;left:0;top:0;width:0;height:0;border:2.6px solid var(--circle);border-radius:14px;opacity:0;pointer-events:none;transition:left .6s cubic-bezier(.6,0,.2,1),top .6s cubic-bezier(.6,0,.2,1),width .6s cubic-bezier(.6,0,.2,1),height .6s cubic-bezier(.6,0,.2,1),opacity .3s;box-shadow:0 0 0 9999px rgba(250,250,247,.5)}
+.ring.on{opacity:1}
+.decide{position:relative;margin-top:18px;padding:14px 18px 16px;border-left:3px solid var(--circle);background:rgba(255,255,255,.6)}
+.decide small{display:block;font-size:.74rem;font-weight:700;color:var(--label);letter-spacing:.06em}
+.decide p{font-weight:700;color:var(--pen);line-height:1.75;min-height:3.5em}
+@media (max-width:860px){
+  .hear{grid-template-columns:1fr;gap:18px}
+  .hear-r{order:-1}.stage{aspect-ratio:3/3.7}
+  .pad{padding:16px 0 18px 0;background-image:none;box-shadow:none;background:none}.pad::before{display:none}.pad-h{padding-left:4px}
+  .notes{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 10px;scrollbar-width:thin}
+  .notes li{flex:0 0 76%;scroll-snap-align:start}
+  .notes button{height:100%;background:#FCFCF8;box-shadow:0 1px 2px rgba(0,0,0,.08),0 6px 14px rgba(20,40,60,.1)}
 }
-.handle{position:absolute;top:0;bottom:0;left:calc(var(--p) * 1%);width:0;z-index:3;pointer-events:none}
-.handle::before{content:"";position:absolute;top:0;bottom:0;left:-1px;width:2px;background:var(--pen)}
-.handle::after{content:"";position:absolute;top:50%;left:-23px;width:46px;height:46px;margin-top:-23px;border-radius:50%;background:var(--pen) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 46'%3E%3Cpath d='M18 16l-7 7 7 7M28 16l7 7-7 7' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-.handle span{position:absolute;top:calc(50% - 64px);font:600 .8rem/1.6 var(--hand);color:#fff;background:var(--pen);padding:1px 10px;border-radius:999px;white-space:nowrap;transition:opacity .3s}
-.handle span:first-child{right:12px}.handle span:last-child{left:12px}
-.stage[style*="--p:100;"] .handle span:last-child,.stage.p-hi .handle span:last-child{opacity:0}
-.stage.p-lo .handle span:first-child{opacity:0}
-.draft:focus-within .browser{outline:3px dashed var(--pen);outline-offset:5px}
-.draft-note{font-family:var(--hand);color:var(--sub);font-size:.95rem;margin-top:14px}
-@media (prefers-reduced-motion:reduce){.wire .s-in{--draw:100%!important}}
+@media (prefers-reduced-motion:reduce){.ring{transition:none}}
 .review-note{background:#1D3236;color:#EAF1F4;font:500 .8rem var(--body);text-align:center;padding:7px 16px;line-height:1.6}
 </style>
 </head>
@@ -516,19 +507,17 @@ body.lock{overflow:hidden}
   <section class="band b-web torn flip" id="web">
     <div class="wrap">
       <p class="sec-label rise">WEB</p>
-      <h2 class="sec-title rise">下書きから、<br>伝わるページへ。</h2>
-      <p class="sec-lead rise">AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成を低コストで提供しています。手描きの構成から始めて、ひとつずつ形にしていきます。</p>
-      <div class="draft" id="draft">
-        <div class="browser">
-          <div class="bar"><i></i><i></i><i></i><span class="url">komorebi-coffee.jp <span class="sample-tag">見本</span></span></div>
-          <div class="stage" id="stage" style="--p:100;--sbg:#F3F0EA;--sink:#2F2A25;--sac:#6D5340;--simg:radial-gradient(circle at 58% 56%,#F1EBE2 0 11%,#6E4F3A 11.5% 14%,transparent 14.5%),radial-gradient(ellipse 30% 22% at 58% 60%,#E4DACD 0 70%,transparent 72%),radial-gradient(circle at 24% 26%,rgba(255,255,255,.35) 0 9%,transparent 10%),linear-gradient(160deg,#BDA48C,#8C6E57)">
-            <div class="site done" aria-hidden="true"><div class="s-in"><div class="s-h" style="--i:0"><b class="s-logo">こもれび珈琲</b><span class="s-nav"><span>メニュー</span><span>お店</span><span>アクセス</span></span><span class="s-btn sm">お問い合わせ</span></div><div class="s-hero"><div class="s-copy" style="--i:2"><small>自家焙煎のコーヒーと焼き菓子</small><strong>朝の一杯を、ゆっくりと。</strong><p class="lines">浅煎りから深煎りまで、その日の豆を一杯ずつ淹れています。</p><span class="s-btn">席を予約する</span></div><div class="s-img" style="--i:1"></div></div><div class="s-cards" style="--i:3"><div>本日の豆<span>エチオピア 浅煎り</span></div><div>焼き菓子<span>季節のタルト</span></div><div>営業時間<span>8:00〜18:00</span></div></div></div></div>
-            <div class="site wire" aria-hidden="true"><div class="s-in"><div class="s-h" style="--i:0"><b class="s-logo" data-w="ロゴ">こもれび珈琲</b><span class="s-nav" data-w="メニュー"><span>メニュー</span><span>お店</span><span>アクセス</span></span><span class="s-btn sm" data-w="予約">お問い合わせ</span></div><div class="s-hero"><div class="s-copy" style="--i:2"><small data-w="お店の一言">自家焙煎のコーヒーと焼き菓子</small><strong data-w="見出し：お店の想い">朝の一杯を、ゆっくりと。</strong><p data-w="説明文" class="lines">浅煎りから深煎りまで、その日の豆を一杯ずつ淹れています。</p><span class="s-btn" data-w="ボタン">席を予約する</span></div><div class="s-img" style="--i:1" data-w="写真"></div></div><div class="s-cards" style="--i:3"><div data-w="本日の豆">本日の豆<span>エチオピア 浅煎り</span></div><div data-w="焼き菓子">焼き菓子<span>季節のタルト</span></div><div data-w="営業時間">営業時間<span>8:00〜18:00</span></div></div><span class="w-note n1">お店の名前は、左上に大きく</span><span class="w-note n2">写真は、お店の空気が<br>伝わるものを1枚</span><span class="w-note n3">予約ボタンは、いちばん目立つ色で</span></div></div>
-            <div class="handle" aria-hidden="true"><span>下書き</span><span>完成</span></div>
-          </div>
+      <h2 class="sec-title rise">お客様のことばから、<br>ページを決めていく。</h2>
+      <p class="sec-lead rise">AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成を低コストで提供しています。決まった型にあてはめず、ヒアリングでうかがったことをもとに、オーダーメイドでつくります。</p>
+      <div class="hear" id="hear">
+        <div class="pad">
+          <p class="pad-h">ヒアリングのメモ <span class="sample-tag">見本</span></p>
+          <ol class="notes" id="notes"><li><button type="button" data-t=".s-logo" data-d="店名を左上に大きく置き、どのページでも目に入るようにしました。" aria-pressed="false"><small>お客様のことば</small>「お店の名前を、まず覚えてもらいたい。」</button></li><li><button type="button" data-t=".s-img" data-d="はじめての方がいちばん知りたい「お店の雰囲気」を、写真でいちばん大きく見せました。" aria-pressed="false"><small>お客様のことば</small>「常連さんは多いけれど、はじめての方にも来てほしい。」</button></li><li><button type="button" data-t=".s-copy .s-btn" data-d="予約はLINEで受け付けることにして、ボタンをいちばん目立つ色にしました。" aria-pressed="false"><small>お客様のことば</small>「電話の予約で、手がふさがってしまう。」</button></li><li><button type="button" data-t=".s-cards" data-d="「本日の豆」の欄を、お店の方が自分で書きかえられるようにしました。" aria-pressed="false"><small>お客様のことば</small>「その日の豆を、毎日お知らせしたい。」</button></li></ol>
         </div>
-        <input class="vh" type="range" min="0" max="100" value="100" id="draftRange" aria-label="下書きと完成を見比べる（左へ動かすと完成、右へ動かすと下書き）">
-        <p class="draft-note">ページの上を左右になぞると、手描きの下書きと、できあがったページを見比べられます。お店は見本です。</p>
+        <div class="hear-r">
+          <div class="browser"><div class="bar"><i></i><i></i><i></i><span class="url">komorebi-coffee.jp <span class="sample-tag">見本</span></span></div><div class="stage" id="stage" style="--sbg:#F3F0EA;--sink:#2F2A25;--sac:#6D5340;--simg:radial-gradient(circle at 58% 56%,#F1EBE2 0 11%,#6E4F3A 11.5% 14%,transparent 14.5%),radial-gradient(ellipse 30% 22% at 58% 60%,#E4DACD 0 70%,transparent 72%),radial-gradient(circle at 24% 26%,rgba(255,255,255,.35) 0 9%,transparent 10%),linear-gradient(160deg,#BDA48C,#8C6E57)"><div class="s-in"><div class="s-h" style="--i:0"><b class="s-logo">こもれび珈琲</b><span class="s-nav"><span>メニュー</span><span>お店</span><span>アクセス</span></span><span class="s-btn sm">お問い合わせ</span></div><div class="s-hero"><div class="s-copy" style="--i:2"><small>自家焙煎のコーヒーと焼き菓子</small><strong>朝の一杯を、ゆっくりと。</strong><p class="lines">浅煎りから深煎りまで、その日の豆を一杯ずつ淹れています。</p><span class="s-btn">LINEで予約する</span></div><div class="s-img" style="--i:1"></div></div><div class="s-cards" style="--i:3"><div>本日の豆<span>エチオピア 浅煎り</span></div><div>焼き菓子<span>季節のタルト</span></div><div>営業時間<span>8:00〜18:00</span></div></div></div><span class="ring" id="ring" aria-hidden="true"></span></div></div>
+          <div class="decide" aria-live="polite"><small>だから、こう決めました</small><p id="decide">左のメモを押すと、ページのどこに生かしたかが見られます。</p></div>
+        </div>
       </div>
       <ul class="svc">
         <li><b>HP制作</b><span>会社やお店のことを、まとめて伝える公式サイト。</span></li>
@@ -905,33 +894,25 @@ body.lock{overflow:hidden}
     $('#sent').textContent = 'ありがとうございます。内容を受け付けました（デザイン確認用のページのため、実際には送信されません）。';
   });
 
-  /* ===== 案1：下書きと完成を見比べる ===== */
+  /* ===== 案1：ヒアリングのメモと、ページの決めごとを結ぶ ===== */
   (() => {
-    const st = $('#stage'), rg = $('#draftRange'), wire = st.querySelector('.wire .s-in');
-    let raf = 0, drag = false;
-    const setP = v => {
-      v = Math.max(0, Math.min(100, v));
-      st.style.setProperty('--p', v.toFixed(2));
-      st.classList.toggle('p-hi', v > 88); st.classList.toggle('p-lo', v < 12);
-      rg.value = Math.round(v);
+    const st = $('#stage'), ring = $('#ring'), dec = $('#decide'), bs = $$('#notes button');
+    let cur = -1, auto = null;
+    const place = () => {
+      if (cur < 0) return;
+      const t = st.querySelector(bs[cur].dataset.t), a = st.getBoundingClientRect(), r = t.getBoundingClientRect(), p = 7;
+      Object.assign(ring.style, {left: r.left - a.left - p + 'px', top: r.top - a.top - p + 'px', width: r.width + p * 2 + 'px', height: r.height + p * 2 + 'px'});
     };
-    const fromX = e => { const r = st.getBoundingClientRect(); setP((e.clientX - r.left) / r.width * 100); };
-    st.addEventListener('pointerdown', e => { drag = true; cancelAnimationFrame(raf); wire.style.setProperty('--draw', '100%'); st.setPointerCapture(e.pointerId); fromX(e); });
-    st.addEventListener('pointermove', e => { if (drag) fromX(e); });
-    ['pointerup', 'pointercancel'].forEach(t => st.addEventListener(t, () => { drag = false; }));
-    rg.addEventListener('input', () => { cancelAnimationFrame(raf); wire.style.setProperty('--draw', '100%'); setP(+rg.value); });
-    const tween = (a, b, ms, fn, done) => {
-      const t0 = performance.now();
-      const f = t => { const k = Math.min(1, (t - t0) / ms), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2; fn(a + (b - a) * e); if (k < 1) raf = requestAnimationFrame(f); else if (done) done(); };
-      raf = requestAnimationFrame(f);
+    const pick = i => {
+      cur = i; bs.forEach((b, j) => b.setAttribute('aria-pressed', j === i));
+      ring.classList.add('on'); place(); dec.textContent = bs[i].dataset.d;
     };
-    setP(100);
+    bs.forEach((b, i) => b.addEventListener('click', () => { clearInterval(auto); pick(i); }));
+    addEventListener('resize', place);
     new IntersectionObserver((es, o) => {
       if (!es[0].isIntersecting) return; o.disconnect();
-      if (reduce) { wire.style.setProperty('--draw', '100%'); setP(50); return; }
-      // 白い紙に下書きが上から描かれ、そのあと完成ページが右からのぞく
-      tween(0, 100, 1700, v => wire.style.setProperty('--draw', v + '%'), () => setTimeout(() => tween(100, 44, 1400, setP), 450));
-    }, {threshold: .35}).observe(st);
+      pick(0); if (!reduce) auto = setInterval(() => pick((cur + 1) % bs.length), 3800);
+    }, {threshold: .45}).observe(st);
   })();
 })();
 </script>

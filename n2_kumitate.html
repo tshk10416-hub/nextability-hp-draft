@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* ノート改 案2 組み立て：手書きノートの構成はそのまま、配色を落ち着かせ、Web事業を主役に（2026-11-28） */
+/* ノート改 案2 ヒアリングの順に：手書きノートの構成はそのまま、配色を落ち着かせ、Web事業を主役に（2026-11-28） */
 :root{
   --ink:#1D3236;       /* ロゴの文字色 */
   --sub:#55636A;
@@ -425,36 +425,45 @@ body.lock{overflow:hidden}
   .s-cards{grid-template-columns:1fr 1fr 1fr;gap:3cqw}.s-cards div{font-size:3cqw}.s-cards div span{font-size:2.7cqw}
 }
 
-/* ===== 案2 組み立て：紙のパーツからページが組み上がる ===== */
-.build{display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:center;margin-top:44px}
-.ctrl-h{font-weight:700;font-size:.85rem;color:var(--sub);margin:0 0 8px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-.chips button{font:700 .9rem var(--body);color:var(--pen);background:#fff;border:1.6px solid var(--pen);border-radius:999px;padding:.4em 1.05em;cursor:pointer;transition:background .2s,color .2s}
-.chips button[aria-pressed="true"]{background:var(--pen);color:#fff}
-.chips button:focus-visible,.re:focus-visible{outline:3px dashed var(--pen);outline-offset:3px}
-.re{font:700 .88rem var(--hand);color:var(--circle);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
-.ctrl .note{font-family:var(--hand);font-size:.9rem;color:var(--sub);line-height:1.7;margin-top:16px}
-.desk{position:relative;display:grid;place-items:center;min-height:200px;padding:34px 20px;background-image:radial-gradient(rgba(29,50,54,.16) 1px,transparent 1.2px);background-size:18px 18px;border-radius:8px}
-.mock{width:var(--mw,100%);transition:width .7s cubic-bezier(.6,0,.2,1)}
-.mbar{display:flex;align-items:center;gap:6px;padding:8px 12px;background:#F2F3F1;border:1.6px solid var(--ink);border-bottom:0;border-radius:10px 10px 0 0;transition:border-radius .5s}
-.mbar i{width:9px;height:9px;border-radius:50%;border:1.4px solid var(--ink);flex:none}
-.mbar .url{margin-left:10px;min-width:0;flex:1;font-size:.72rem;color:var(--sub);background:#fff;border:1px solid var(--rule);border-radius:999px;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mscreen{position:relative;container-type:inline-size;height:var(--mh,420px);border:1.6px solid var(--ink);border-radius:0 0 10px 10px;background:#FBFBF8;transition:height .7s cubic-bezier(.6,0,.2,1),border-radius .5s}
-.mock[data-d="sp"] .mbar{border-radius:22px 22px 0 0}
-.mock[data-d="sp"] .mscreen{border-radius:0 0 22px 22px}
-.mscreen .s-in{transition:background-color .4s;overflow:visible}
-/* 組み上がる前：パーツは紙の切り抜きとして机の上に散らばっている */
-.part{position:relative;z-index:1;transition:translate .9s cubic-bezier(.3,1.35,.5,1) calc(var(--i) * .14s),rotate .9s cubic-bezier(.3,1.35,.5,1) calc(var(--i) * .14s),box-shadow .35s ease calc(var(--i) * .14s + .75s),background-color .4s}
-.s-h.part{background:var(--sbg)}
-.s-copy.part{background:var(--sbg)}
-.s-cards.part{background:var(--sbg)}
-.mock:not(.built) .part{translate:calc(var(--tx) * 1cqw) calc(var(--ty) * 1cqw);rotate:var(--r);box-shadow:0 2px 3px rgba(0,0,0,.12),0 14px 26px rgba(0,0,0,.16);transition-duration:.6s;transition-timing-function:cubic-bezier(.5,0,.7,.4);transition-delay:calc(var(--i) * .05s)}
-.mock:not(.built) .s-in{background-color:transparent}
-.mock.built .s-in{transition-delay:.9s}
-.mock.flip .s-in > *{animation:flipin .62s ease both}
-@keyframes flipin{0%{transform:perspective(900px) rotateX(0)}45%,55%{transform:perspective(900px) rotateX(90deg)}100%{transform:perspective(900px) rotateX(0)}}
-@media (max-width:860px){.build{grid-template-columns:1fr;gap:22px}.desk{padding:24px 10px}}
-@media (prefers-reduced-motion:reduce){.part,.mock,.mscreen{transition:none!important}.mock.flip .s-in > *{animation:none}}
+.browser{background:#FDFDFB;border:1.6px solid var(--ink);border-radius:10px;overflow:hidden;box-shadow:0 2px 3px rgba(0,0,0,.08),0 18px 36px rgba(20,40,60,.12)}
+.bar{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1.6px solid var(--ink);background:#F2F3F1}
+.bar i{width:9px;height:9px;border-radius:50%;border:1.4px solid var(--ink);flex:none}
+.bar .url{margin-left:10px;min-width:0;max-width:340px;flex:1;font-size:.72rem;color:var(--sub);background:#fff;border:1px solid var(--rule);border-radius:999px;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stage{position:relative;container-type:inline-size;aspect-ratio:16/10.4;overflow:hidden}
+
+/* ===== 案2 ヒアリングの順に、ページが決まっていく ===== */
+.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:52px;align-items:start;margin-top:44px}
+.story-cap{font-family:var(--hand);color:var(--sub);margin-bottom:10px}
+.step{min-height:52vh;padding:22px 0;display:flex;flex-direction:column;justify-content:center;opacity:.35;transition:opacity .4s}
+.step.cur{opacity:1}
+.who{font-size:.72rem;font-weight:700;color:var(--sub);letter-spacing:.06em;margin-bottom:4px}
+.who.r{text-align:right}
+.bub{max-width:88%;padding:10px 16px;border-radius:16px;font-family:var(--hand);font-weight:600;font-size:1.05rem;line-height:1.65;margin-bottom:12px}
+.bub.q{background:#fff;border-top-left-radius:4px;color:var(--pen)}
+.bub.a{align-self:flex-end;background:var(--marker);border-top-right-radius:4px;color:#33332D}
+.then{font-size:.92rem;line-height:1.75;border-left:3px solid var(--circle);padding:4px 0 4px 14px}
+.then b{display:block;font-size:.72rem;color:var(--label);letter-spacing:.06em}
+.story-end{font-family:var(--hand);font-weight:600;font-size:1.2rem;color:var(--pen);padding:8vh 0 4vh}
+.sticky{position:sticky;top:96px}
+.step-no{margin-top:12px;font-size:.85rem;color:var(--sub);text-align:right}
+.step-no b{font-size:1.15rem;color:var(--pen)}
+#sstage [data-at]{transition:color .45s,background-color .45s,border-color .45s,opacity .45s}
+#sstage [data-at]:not(.on){color:transparent!important;background:none!important;border:1.5px dashed #A3AAAE!important;border-radius:6px}
+#sstage [data-at]:not(.on) *{visibility:hidden}
+#sstage .s-img:not(.on){background:repeating-linear-gradient(45deg,rgba(0,0,0,.04) 0 6px,transparent 6px 12px)!important}
+#sstage .just{animation:just 1.1s ease}
+@keyframes just{0%{box-shadow:0 0 0 0 rgba(53,92,140,0)}30%{box-shadow:0 0 0 6px var(--circle)}100%{box-shadow:0 0 0 0 rgba(53,92,140,0)}}
+@media (max-width:860px){
+  .story{grid-template-columns:1fr;gap:0}
+  .sticky{order:-1;top:66px;z-index:5;background:var(--web-bg);padding:12px 0 8px;margin:0 -4px}
+  .sticky .stage{position:absolute;left:0;top:0;width:640px;aspect-ratio:16/10.4;transform:scale(var(--k,.5));transform-origin:0 0}
+  .sticky .browser{position:relative;height:calc(var(--k,.5) * 416px + var(--bh,36px))}
+  .sticky .bar{position:relative;z-index:1}
+  .sticky .stage{top:var(--bh,36px)}
+  .step-no{margin-top:6px}
+  .step{min-height:62vh}
+}
+@media (prefers-reduced-motion:reduce){#sstage [data-at]{transition:none}#sstage .just{animation:none}}
 .review-note{background:#1D3236;color:#EAF1F4;font:500 .8rem var(--body);text-align:center;padding:7px 16px;line-height:1.6}
 </style>
 </head>
@@ -504,22 +513,16 @@ body.lock{overflow:hidden}
   <section class="band b-web torn flip" id="web">
     <div class="wrap">
       <p class="sec-label rise">WEB</p>
-      <h2 class="sec-title rise">お店や会社に合わせて、<br>ページを組み立てる。</h2>
-      <p class="sec-lead rise">AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成を低コストで提供しています。業種やお客様に合わせて、見せ方を変えていきます。</p>
-      <div class="build" id="build">
-        <div class="ctrl">
-          <p class="ctrl-h">業種を選ぶ</p>
-          <div class="chips" id="kinds"><button type="button" data-k="cafe" aria-pressed="true">カフェ</button><button type="button" data-k="koumuten" aria-pressed="false">工務店</button><button type="button" data-k="salon" aria-pressed="false">美容室</button><button type="button" data-k="seikotsu" aria-pressed="false">整骨院</button></div>
-          <p class="ctrl-h">見る画面</p>
-          <div class="chips" id="devs"><button type="button" data-d="pc" aria-pressed="true">パソコン</button><button type="button" data-d="sp" aria-pressed="false">スマホ</button></div>
-          <button class="re" id="rebuild" type="button">もう一度組み立てる</button>
-          <p class="note">見本のページです。業種や画面を切り替えると、その場で組み替わります。</p>
+      <h2 class="sec-title rise">聞くことから、<br>つくりはじめる。</h2>
+      <p class="sec-lead rise">AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成を低コストで提供しています。決まった型にあてはめず、ヒアリングでうかがったことをもとに、オーダーメイドでつくります。</p>
+      <div class="story" id="story">
+        <div class="steps">
+          <p class="story-cap">架空の工務店さんとの、ヒアリングの例です。</p><div class="step" data-s="1"><p class="who">NextAbility</p><p class="bub q">どんな会社ですか？</p><p class="who r">お客様</p><p class="bub a">木の家を建てている、地元の工務店です。</p><p class="then"><b>決めたこと</b>社名と「木の家の新築・リフォーム」を、最初に目に入る場所へ。</p></div><div class="step" data-s="2"><p class="who">NextAbility</p><p class="bub q">どんな方に、見てほしいですか？</p><p class="who r">お客様</p><p class="bub a">子育て中のご家族です。</p><p class="then"><b>決めたこと</b>家族の時間を思い浮かべられる見出しと、木の質感が伝わる写真に。</p></div><div class="step" data-s="3"><p class="who">NextAbility</p><p class="bub q">いま、困っていることは？</p><p class="who r">お客様</p><p class="bub a">見学会の申し込みが、電話だけなんです。</p><p class="then"><b>決めたこと</b>ページから申し込めるボタンを、見出しのすぐ下に。</p></div><div class="step" data-s="4"><p class="who">NextAbility</p><p class="bub q">お客様に、よく聞かれることは？</p><p class="who r">お客様</p><p class="bub a">建てた家の例と、費用の目安です。</p><p class="then"><b>決めたこと</b>施工事例と費用の目安を、すぐ見られる場所に。</p></div>
+          <p class="story-end">聞いたことから、ひとつずつ決めていきます。</p>
         </div>
-        <div class="desk" id="desk">
-          <div class="mock" id="mock" data-d="pc" aria-live="polite">
-            <div class="mbar"><i></i><i></i><i></i><span class="url"><span id="mUrl">komorebi-coffee.jp</span> <span class="sample-tag">見本</span></span></div>
-            <div class="mscreen" id="mscreen" style="--sbg:#F3F0EA;--sink:#2F2A25;--sac:#6D5340;--simg:radial-gradient(circle at 58% 56%,#F1EBE2 0 11%,#6E4F3A 11.5% 14%,transparent 14.5%),radial-gradient(ellipse 30% 22% at 58% 60%,#E4DACD 0 70%,transparent 72%),radial-gradient(circle at 24% 26%,rgba(255,255,255,.35) 0 9%,transparent 10%),linear-gradient(160deg,#BDA48C,#8C6E57)"><div class="s-in"><div class="s-h part" style="--i:0"><b class="s-logo">こもれび珈琲</b><span class="s-nav"><span>メニュー</span><span>お店</span><span>アクセス</span></span><span class="s-btn sm">お問い合わせ</span></div><div class="s-hero"><div class="s-copy part" style="--i:2"><small>自家焙煎のコーヒーと焼き菓子</small><strong>朝の一杯を、ゆっくりと。</strong><p class="lines">浅煎りから深煎りまで、その日の豆を一杯ずつ淹れています。</p><span class="s-btn">席を予約する</span></div><div class="s-img part" style="--i:1"></div></div><div class="s-cards part" style="--i:3"><div>本日の豆<span>エチオピア 浅煎り</span></div><div>焼き菓子<span>季節のタルト</span></div><div>営業時間<span>8:00〜18:00</span></div></div></div></div>
-          </div>
+        <div class="sticky">
+          <div class="browser"><div class="bar"><i></i><i></i><i></i><span class="url">hidamari-koumuten.jp <span class="sample-tag">見本</span></span></div><div class="stage" id="sstage" style="--sbg:#EEF0EA;--sink:#263028;--sac:#4F6B4A;--simg:linear-gradient(#DCE5E6 0 38%,transparent 38%),repeating-linear-gradient(90deg,#C9AC86 0 7%,#B69570 7% 7.8%)"><div class="s-in"><div class="s-h" style="--i:0"><b class="s-logo">ひだまり工務店</b><span class="s-nav"><span>施工事例</span><span>家づくり</span><span>会社案内</span></span><span class="s-btn sm">お問い合わせ</span></div><div class="s-hero l"><div class="s-copy" style="--i:2"><small>木の家の新築・リフォーム</small><strong>家族の時間が、長く続く家を。</strong><p class="lines">設計から施工、住んでからの手入れまで、同じ担当がうかがいます。</p><span class="s-btn">見学会に申し込む</span></div><div class="s-img" style="--i:1"></div></div><div class="s-cards" style="--i:3"><div>施工事例<span>平屋・二世帯</span></div><div>費用の目安<span>プラン別に掲載</span></div><div>見学会<span>毎月開催</span></div></div></div></div></div>
+          <p class="step-no">ヒアリング <b id="stepNo">0</b> / 4</p>
         </div>
       </div>
       <ul class="svc">
@@ -897,45 +900,33 @@ body.lock{overflow:hidden}
     $('#sent').textContent = 'ありがとうございます。内容を受け付けました（デザイン確認用のページのため、実際には送信されません）。';
   });
 
-  /* ===== 案2：紙のパーツからページを組み立てる ===== */
+  /* ===== 案2：ヒアリングの順に、ページが決まっていく ===== */
   (() => {
-    const S = {cafe:{name:'こもれび珈琲',url:'komorebi-coffee.jp',tag:'自家焙煎のコーヒーと焼き菓子',head:'朝の一杯を、ゆっくりと。',text:'浅煎りから深煎りまで、その日の豆を一杯ずつ淹れています。',btn:'席を予約する',nav:['メニュー', 'お店', 'アクセス'],cards:[['本日の豆', 'エチオピア 浅煎り'], ['焼き菓子', '季節のタルト'], ['営業時間', '8:00〜18:00']],lay:'r',style:"--sbg:#F3F0EA;--sink:#2F2A25;--sac:#6D5340;--simg:radial-gradient(circle at 58% 56%,#F1EBE2 0 11%,#6E4F3A 11.5% 14%,transparent 14.5%),radial-gradient(ellipse 30% 22% at 58% 60%,#E4DACD 0 70%,transparent 72%),radial-gradient(circle at 24% 26%,rgba(255,255,255,.35) 0 9%,transparent 10%),linear-gradient(160deg,#BDA48C,#8C6E57)"},koumuten:{name:'ひだまり工務店',url:'hidamari-koumuten.jp',tag:'木の家の新築・リフォーム',head:'家族の時間が、長く続く家を。',text:'設計から施工、住んでからの手入れまで、同じ担当がうかがいます。',btn:'見学会に申し込む',nav:['施工事例', '家づくり', '会社案内'],cards:[['施工事例', '平屋・二世帯'], ['リフォーム', '水まわり・外壁'], ['見学会', '毎月開催']],lay:'l',style:"--sbg:#EEF0EA;--sink:#263028;--sac:#4F6B4A;--simg:linear-gradient(#DCE5E6 0 38%,transparent 38%),repeating-linear-gradient(90deg,#C9AC86 0 7%,#B69570 7% 7.8%)"},salon:{name:'hair atelier sora',url:'sora-hair.jp',tag:'一人ひとりに合わせた髪型を',head:'似合うを、いっしょに探す。',text:'カウンセリングの時間を長めにとって、ご希望をうかがいます。',btn:'空き時間を見る',nav:['メニュー', 'スタイル', 'スタッフ'],cards:[['カット', '4,400円〜'], ['カラー', '6,600円〜'], ['ご予約', 'LINEで受付']],lay:'r',style:"--sbg:#F2EFF0;--sink:#2E2A30;--sac:#7A5E6E;--simg:radial-gradient(circle at 68% 40%,#EADDE3 0 20%,transparent 21%),radial-gradient(circle at 30% 75%,rgba(255,255,255,.3) 0 14%,transparent 15%),linear-gradient(150deg,#CDBBC5,#9C8594)"},seikotsu:{name:'みどり整骨院',url:'midori-seikotsu.jp',tag:'肩こり・腰痛・スポーツのけが',head:'その痛み、まず相談してください。',text:'はじめての方は、問診と体の動きの確認から始めます。',btn:'受付時間を見る',nav:['施術', 'はじめての方', 'アクセス'],cards:[['受付時間', '9:00〜19:30'], ['はじめての方', '問診から丁寧に'], ['アクセス', '駐車場あり']],lay:'l',style:"--sbg:#EEF3F3;--sink:#22333A;--sac:#3C6E7A;--simg:radial-gradient(ellipse 40% 26% at 30% 82%,#D3E5E5 0 70%,transparent 72%),radial-gradient(circle at 72% 30%,rgba(255,255,255,.3) 0 12%,transparent 13%),linear-gradient(160deg,#A3C2C6,#5F8E96)"}};
-    const mock = $('#mock'), scr = $('#mscreen'), desk = $('#desk');
-    const parts = [...scr.querySelectorAll('.part')];
-    const SC = [[-14, -26, '-7deg'], [26, -10, '6deg'], [-24, 14, '-4deg'], [18, 22, '5deg']]; // 散らばる位置（ページ幅に対する割合）
-    parts.forEach((p, i) => { p.style.setProperty('--tx', SC[i][0]); p.style.setProperty('--ty', SC[i][1]); p.style.setProperty('--r', SC[i][2]); });
-    let dev = 'pc', kind = 'cafe';
-    const size = () => {
-      const w = desk.clientWidth - (innerWidth < 861 ? 20 : 40);
-      const mw = dev === 'sp' ? Math.min(w, 300) : w;
-      const mh = dev === 'sp' ? Math.round(mw * 1.78) : Math.round(Math.max(mw * .6, Math.min(mw * 1.25, 380)));
-      mock.style.setProperty('--mw', mw + 'px'); scr.style.setProperty('--mh', mh + 'px');
+    const st = $('#sstage'), steps = $$('.step'), no = $('#stepNo');
+    const AT = {'.s-logo': 1, '.s-copy small': 1, '.s-nav': 1, '.s-img': 2, '.s-copy strong': 2, '.s-copy p': 2, '.s-copy .s-btn': 3, '.s-h .s-btn': 3, '.s-cards': 4};
+    Object.entries(AT).forEach(([s, n]) => st.querySelectorAll(s).forEach(el => el.dataset.at = n));
+    const els = [...st.querySelectorAll('[data-at]')];
+    let cur = -1;
+    const set = n => {
+      if (n === cur) return; const up = n > cur; cur = n; no.textContent = n;
+      steps.forEach(s => s.classList.toggle('cur', +s.dataset.s === n));
+      els.forEach(el => {
+        const on = +el.dataset.at <= n, was = el.classList.contains('on');
+        el.classList.toggle('on', on);
+        if (on && !was && up) { el.classList.remove('just'); void el.offsetWidth; el.classList.add('just'); }
+      });
     };
-    const apply = k => {
-      const d = S[k], q = s => scr.querySelector(s);
-      scr.setAttribute('style', d.style + ';--mh:' + scr.style.getPropertyValue('--mh'));
-      q('.s-logo').textContent = d.name; $('#mUrl').textContent = d.url;
-      q('.s-nav').innerHTML = d.nav.map(n => '<span>' + n + '</span>').join('');
-      q('.s-copy small').textContent = d.tag; q('.s-copy strong').textContent = d.head; q('.s-copy p').textContent = d.text; q('.s-copy .s-btn').textContent = d.btn;
-      q('.s-hero').classList.toggle('l', d.lay === 'l');
-      q('.s-cards').innerHTML = d.cards.map(c => '<div>' + c[0] + '<span>' + c[1] + '</span></div>').join('');
+    set(0);
+    const fit = () => { const b = st.parentElement; if (innerWidth < 861) { b.style.setProperty('--k', (b.clientWidth - 3) / 640); b.style.setProperty('--bh', b.querySelector('.bar').offsetHeight + 'px'); } else b.style.removeProperty('--k'); };
+    let tick = false;
+    const check = () => {
+      tick = false; const line = innerHeight * (innerWidth < 861 ? .72 : .55); let n = 0;
+      steps.forEach(s => { if (s.querySelector('.bub').getBoundingClientRect().top < line) n = +s.dataset.s; });
+      set(n);
     };
-    const press = (box, btn) => box.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b === btn));
-    $('#kinds').addEventListener('click', e => {
-      const b = e.target.closest('button'); if (!b || b.dataset.k === kind) return;
-      kind = b.dataset.k; press($('#kinds'), b);
-      if (reduce || !mock.classList.contains('built')) { apply(kind); return; }
-      mock.classList.remove('flip'); void mock.offsetWidth; mock.classList.add('flip');
-      setTimeout(() => apply(kind), 280); setTimeout(() => mock.classList.remove('flip'), 700);
-    });
-    $('#devs').addEventListener('click', e => {
-      const b = e.target.closest('button'); if (!b || b.dataset.d === dev) return;
-      dev = b.dataset.d; press($('#devs'), b); mock.dataset.d = dev; size();
-    });
-    const build = () => { mock.classList.remove('built'); setTimeout(() => mock.classList.add('built'), reduce ? 0 : 750); };
-    $('#rebuild').addEventListener('click', build);
-    size(); addEventListener('resize', size);
-    new IntersectionObserver((es, o) => { if (!es[0].isIntersecting) return; o.disconnect(); setTimeout(() => mock.classList.add('built'), reduce ? 0 : 300); }, {threshold: .4}).observe(desk);
+    addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(check); } }, {passive: true});
+    addEventListener('resize', () => { fit(); check(); });
+    fit(); check();
   })();
 })();
 </script>
