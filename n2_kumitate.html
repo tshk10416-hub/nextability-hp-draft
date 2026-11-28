@@ -33,7 +33,7 @@ body{
   --circle:#3F7A75; --check:#3F7A75; --marker:#E3DEC6; --wave:#7D958D; --label:#4D7671;
   --tape1:rgba(190,200,186,.85); --tape2:rgba(220,224,212,.9); --corner:#7D958D; --sticky:#E3DEC6; --photo:#C5CBC8;
   --phi-bg:#1F3F5F; --phi-label:#D0BC90;
-  --b-unso:#86A8A3; --b-web:#2F5D59; --b-fp:#C3B38B;
+  --web-deep:#2F5D59; --b-unso:#33A1D7; --b-web:#ED9055; --b-fp:#F5CD71;
   --v1:#CFDCD8; --v2:#DED7C2; --v3:#D5DDCB; --v4:#DAD6DF;
 }
 
@@ -441,7 +441,7 @@ body.lock{overflow:hidden}
 .t-box{display:flex;flex-direction:column;gap:12px;min-height:170px}
 .qb,.ab{max-width:92%;padding:12px 18px;border-radius:20px;font-family:var(--hand);font-weight:600;line-height:1.5;animation:pop .45s cubic-bezier(.3,1.5,.5,1) both}
 .qb{align-self:flex-start;background:#fff;color:var(--sub);font-size:1rem;border-top-left-radius:6px}
-.ab{align-self:flex-end;background:var(--b-web);color:#fff;font-size:1.3rem;border-top-right-radius:6px;box-shadow:0 8px 18px rgba(20,40,60,.18)}
+.ab{align-self:flex-end;background:var(--web-deep);color:#fff;font-size:1.3rem;border-top-right-radius:6px;box-shadow:0 8px 18px rgba(20,40,60,.18)}
 .ab.gone{opacity:.25;box-shadow:none}
 @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
 .flyer{position:fixed;z-index:50;margin:0;pointer-events:none;transform-origin:0 0;transition:transform .8s cubic-bezier(.6,0,.25,1),opacity .8s ease}
