@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* ノート改 案2 ヒアリングの順に：手書きノートの構成はそのまま、配色を落ち着かせ、Web事業を主役に（2026-11-28） */
+/* ノート改 案2 ことばがページに：手書きノートの構成はそのまま、配色を落ち着かせ、Web事業を主役に（2026-11-28） */
 :root{
   --ink:#1D3236;       /* ロゴの文字色 */
   --sub:#55636A;
@@ -431,39 +431,33 @@ body.lock{overflow:hidden}
 .bar .url{margin-left:10px;min-width:0;max-width:340px;flex:1;font-size:.72rem;color:var(--sub);background:#fff;border:1px solid var(--rule);border-radius:999px;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stage{position:relative;container-type:inline-size;aspect-ratio:16/10.4;overflow:hidden}
 
-/* ===== 案2 ヒアリングの順に、ページが決まっていく ===== */
-.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:52px;align-items:start;margin-top:44px}
-.story-cap{font-family:var(--hand);color:var(--sub);margin-bottom:10px}
-.step{min-height:52vh;padding:22px 0;display:flex;flex-direction:column;justify-content:center;opacity:.35;transition:opacity .4s}
-.step.cur{opacity:1}
-.who{font-size:.72rem;font-weight:700;color:var(--sub);letter-spacing:.06em;margin-bottom:4px}
-.who.r{text-align:right}
-.bub{max-width:88%;padding:10px 16px;border-radius:16px;font-family:var(--hand);font-weight:600;font-size:1.05rem;line-height:1.65;margin-bottom:12px}
-.bub.q{background:#fff;border-top-left-radius:4px;color:var(--pen)}
-.bub.a{align-self:flex-end;background:var(--marker);border-top-right-radius:4px;color:#33332D}
-.then{font-size:.92rem;line-height:1.75;border-left:3px solid var(--circle);padding:4px 0 4px 14px}
-.then b{display:block;font-size:.72rem;color:var(--label);letter-spacing:.06em}
-.story-end{font-family:var(--hand);font-weight:600;font-size:1.2rem;color:var(--pen);padding:8vh 0 4vh}
-.sticky{position:sticky;top:96px}
-.step-no{margin-top:12px;font-size:.85rem;color:var(--sub);text-align:right}
-.step-no b{font-size:1.15rem;color:var(--pen)}
-#sstage [data-at]{transition:color .45s,background-color .45s,border-color .45s,opacity .45s}
-#sstage [data-at]:not(.on){color:transparent!important;background:none!important;border:1.5px dashed #A3AAAE!important;border-radius:6px}
-#sstage [data-at]:not(.on) *{visibility:hidden}
-#sstage .s-img:not(.on){background:repeating-linear-gradient(45deg,rgba(0,0,0,.04) 0 6px,transparent 6px 12px)!important}
-#sstage .just{animation:just 1.1s ease}
-@keyframes just{0%{box-shadow:0 0 0 0 rgba(53,92,140,0)}30%{box-shadow:0 0 0 6px var(--circle)}100%{box-shadow:0 0 0 0 rgba(53,92,140,0)}}
+/* ===== 案2 ことばが飛んでいき、ページの部品になる ===== */
+.fly{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);gap:48px;align-items:center;margin-top:40px}
+.talk{position:relative;min-height:300px;display:flex;flex-direction:column;justify-content:center}
+.t-dots{display:flex;gap:8px;margin-bottom:18px}
+.t-dots i{width:28px;height:5px;border-radius:3px;background:#CDD3D6;transition:background .3s}
+.t-dots i.on{background:var(--circle)}
+.t-box{display:flex;flex-direction:column;gap:12px;min-height:170px}
+.qb,.ab{max-width:92%;padding:12px 18px;border-radius:20px;font-family:var(--hand);font-weight:600;line-height:1.5;animation:pop .45s cubic-bezier(.3,1.5,.5,1) both}
+.qb{align-self:flex-start;background:#fff;color:var(--sub);font-size:1rem;border-top-left-radius:6px}
+.ab{align-self:flex-end;background:var(--b-web);color:#fff;font-size:1.3rem;border-top-right-radius:6px;box-shadow:0 8px 18px rgba(20,40,60,.18)}
+.ab.gone{opacity:.25;box-shadow:none}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.flyer{position:fixed;z-index:50;margin:0;pointer-events:none;transform-origin:0 0;transition:transform .8s cubic-bezier(.6,0,.25,1),opacity .8s ease}
+.talk .re{align-self:flex-start;margin-top:22px;font:700 .95rem var(--body);color:#fff;background:var(--pen);border:0;border-radius:999px;padding:.65em 1.4em;cursor:pointer}
+.talk .re:focus-visible{outline:3px dashed var(--pen);outline-offset:3px}
+#fstage [data-st]{transition:opacity .5s ease,transform .5s cubic-bezier(.3,1.4,.5,1)}
+#fstage [data-st]:not(.on){opacity:0;transform:scale(.92)}
+#fstage .s-h{border-bottom-color:transparent;transition:border-color .5s}
+#fstage.h-on .s-h{border-bottom-color:rgba(0,0,0,.1)}
 @media (max-width:860px){
-  .story{grid-template-columns:1fr;gap:0}
-  .sticky{order:-1;top:66px;z-index:5;background:var(--web-bg);padding:12px 0 8px;margin:0 -4px}
-  .sticky .stage{position:absolute;left:0;top:0;width:640px;aspect-ratio:16/10.4;transform:scale(var(--k,.5));transform-origin:0 0}
-  .sticky .browser{position:relative;height:calc(var(--k,.5) * 416px + var(--bh,36px))}
-  .sticky .bar{position:relative;z-index:1}
-  .sticky .stage{top:var(--bh,36px)}
-  .step-no{margin-top:6px}
-  .step{min-height:62vh}
+  .fly{grid-template-columns:1fr;gap:14px}
+  .talk{min-height:0}
+  .t-box{min-height:132px}
+  .ab{font-size:1.12rem}.qb{font-size:.92rem}
+  .stage{aspect-ratio:3/3.9}
 }
-@media (prefers-reduced-motion:reduce){#sstage [data-at]{transition:none}#sstage .just{animation:none}}
+@media (prefers-reduced-motion:reduce){.flyer{display:none}#fstage [data-st]{transition:none}.qb,.ab{animation:none}}
 .review-note{background:#1D3236;color:#EAF1F4;font:500 .8rem var(--body);text-align:center;padding:7px 16px;line-height:1.6}
 </style>
 </head>
@@ -513,17 +507,15 @@ body.lock{overflow:hidden}
   <section class="band b-web torn flip" id="web">
     <div class="wrap">
       <p class="sec-label rise">WEB</p>
-      <h2 class="sec-title rise">聞くことから、<br>つくりはじめる。</h2>
+      <h2 class="sec-title rise">聞いたことが、<br>そのままページになる。</h2>
       <p class="sec-lead rise">AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成を低コストで提供しています。決まった型にあてはめず、ヒアリングでうかがったことをもとに、オーダーメイドでつくります。</p>
-      <div class="story" id="story">
-        <div class="steps">
-          <p class="story-cap">架空の工務店さんとの、ヒアリングの例です。</p><div class="step" data-s="1"><p class="who">NextAbility</p><p class="bub q">どんな会社ですか？</p><p class="who r">お客様</p><p class="bub a">木の家を建てている、地元の工務店です。</p><p class="then"><b>決めたこと</b>社名と「木の家の新築・リフォーム」を、最初に目に入る場所へ。</p></div><div class="step" data-s="2"><p class="who">NextAbility</p><p class="bub q">どんな方に、見てほしいですか？</p><p class="who r">お客様</p><p class="bub a">子育て中のご家族です。</p><p class="then"><b>決めたこと</b>家族の時間を思い浮かべられる見出しと、木の質感が伝わる写真に。</p></div><div class="step" data-s="3"><p class="who">NextAbility</p><p class="bub q">いま、困っていることは？</p><p class="who r">お客様</p><p class="bub a">見学会の申し込みが、電話だけなんです。</p><p class="then"><b>決めたこと</b>ページから申し込めるボタンを、見出しのすぐ下に。</p></div><div class="step" data-s="4"><p class="who">NextAbility</p><p class="bub q">お客様に、よく聞かれることは？</p><p class="who r">お客様</p><p class="bub a">建てた家の例と、費用の目安です。</p><p class="then"><b>決めたこと</b>施工事例と費用の目安を、すぐ見られる場所に。</p></div>
-          <p class="story-end">聞いたことから、ひとつずつ決めていきます。</p>
+      <div class="fly" id="fly">
+        <div class="talk" id="talk" aria-live="polite">
+          <div class="t-dots" id="tdots"><i></i><i></i><i></i><i></i></div>
+          <div class="t-box" id="tbox"></div>
+          <button class="re" id="replay2" type="button" hidden>もう一度見る</button>
         </div>
-        <div class="sticky">
-          <div class="browser"><div class="bar"><i></i><i></i><i></i><span class="url">hidamari-koumuten.jp <span class="sample-tag">見本</span></span></div><div class="stage" id="sstage" style="--sbg:#EEF0EA;--sink:#263028;--sac:#4F6B4A;--simg:linear-gradient(#DCE5E6 0 38%,transparent 38%),repeating-linear-gradient(90deg,#C9AC86 0 7%,#B69570 7% 7.8%)"><div class="s-in"><div class="s-h" style="--i:0"><b class="s-logo">ひだまり工務店</b><span class="s-nav"><span>施工事例</span><span>家づくり</span><span>会社案内</span></span><span class="s-btn sm">お問い合わせ</span></div><div class="s-hero l"><div class="s-copy" style="--i:2"><small>木の家の新築・リフォーム</small><strong>家族の時間が、長く続く家を。</strong><p class="lines">設計から施工、住んでからの手入れまで、同じ担当がうかがいます。</p><span class="s-btn">見学会に申し込む</span></div><div class="s-img" style="--i:1"></div></div><div class="s-cards" style="--i:3"><div>施工事例<span>平屋・二世帯</span></div><div>費用の目安<span>プラン別に掲載</span></div><div>見学会<span>毎月開催</span></div></div></div></div></div>
-          <p class="step-no">ヒアリング <b id="stepNo">0</b> / 4</p>
-        </div>
+        <div class="f-page"><div class="browser"><div class="bar"><i></i><i></i><i></i><span class="url">hidamari-koumuten.jp <span class="sample-tag">見本</span></span></div><div class="stage" id="fstage" style="--sbg:#EEF0EA;--sink:#263028;--sac:#4F6B4A;--simg:linear-gradient(#DCE5E6 0 38%,transparent 38%),repeating-linear-gradient(90deg,#C9AC86 0 7%,#B69570 7% 7.8%)"><div class="s-in"><div class="s-h" style="--i:0"><b class="s-logo">ひだまり工務店</b><span class="s-nav"><span>施工事例</span><span>家づくり</span><span>会社案内</span></span><span class="s-btn sm">お問い合わせ</span></div><div class="s-hero l"><div class="s-copy" style="--i:2"><small>木の家の新築・リフォーム</small><strong>家族の時間が、長く続く家を。</strong><p class="lines">設計から施工、住んでからの手入れまで、同じ担当がうかがいます。</p><span class="s-btn">見学会に申し込む</span></div><div class="s-img" style="--i:1"></div></div><div class="s-cards" style="--i:3"><div>施工事例<span>平屋・二世帯</span></div><div>費用の目安<span>プラン別に掲載</span></div><div>見学会<span>毎月開催</span></div></div></div></div></div></div>
       </div>
       <ul class="svc">
         <li><b>HP制作</b><span>会社やお店のことを、まとめて伝える公式サイト。</span></li>
@@ -900,33 +892,40 @@ body.lock{overflow:hidden}
     $('#sent').textContent = 'ありがとうございます。内容を受け付けました（デザイン確認用のページのため、実際には送信されません）。';
   });
 
-  /* ===== 案2：ヒアリングの順に、ページが決まっていく ===== */
+  /* ===== 案2：ことばが飛んでいき、ページの部品になる ===== */
   (() => {
-    const st = $('#sstage'), steps = $$('.step'), no = $('#stepNo');
-    const AT = {'.s-logo': 1, '.s-copy small': 1, '.s-nav': 1, '.s-img': 2, '.s-copy strong': 2, '.s-copy p': 2, '.s-copy .s-btn': 3, '.s-h .s-btn': 3, '.s-cards': 4};
-    Object.entries(AT).forEach(([s, n]) => st.querySelectorAll(s).forEach(el => el.dataset.at = n));
-    const els = [...st.querySelectorAll('[data-at]')];
-    let cur = -1;
-    const set = n => {
-      if (n === cur) return; const up = n > cur; cur = n; no.textContent = n;
-      steps.forEach(s => s.classList.toggle('cur', +s.dataset.s === n));
-      els.forEach(el => {
-        const on = +el.dataset.at <= n, was = el.classList.contains('on');
-        el.classList.toggle('on', on);
-        if (on && !was && up) { el.classList.remove('just'); void el.offsetWidth; el.classList.add('just'); }
+    const T = [['どんな会社ですか？','木の家の工務店です',['.s-logo', '.s-nav', '.s-copy small', '.s-h .s-btn']],['誰に見てほしいですか？','子育て中のご家族に',['.s-img', '.s-copy strong', '.s-copy p']],['困っていることは？','見学会の申し込みを増やしたい',['.s-copy .s-btn']],['よく聞かれることは？','建てた家の例と、費用',['.s-cards']]];
+    const st = $('#fstage'), tbox = $('#tbox'), dots = $$('#tdots i'), re = $('#replay2');
+    T.forEach((t, i) => t[2].forEach(s => st.querySelectorAll(s).forEach(el => el.dataset.st = i)));
+    const parts = [...st.querySelectorAll('[data-st]')];
+    let timers = [];
+    const later = (f, ms) => timers.push(setTimeout(f, reduce ? 0 : ms));
+    const reset = () => { timers.forEach(clearTimeout); timers = []; parts.forEach(p => p.classList.remove('on')); st.classList.remove('h-on'); dots.forEach(d => d.classList.remove('on')); tbox.innerHTML = ''; re.hidden = true; };
+    const bubble = (cls, text) => { const b = document.createElement('p'); b.className = cls; b.textContent = text; tbox.append(b); return b; };
+    const flyTo = (b, els) => {
+      const a = b.getBoundingClientRect();
+      const rs = els.map(e => e.getBoundingClientRect());
+      const L = Math.min(...rs.map(r => r.left)), Tp = Math.min(...rs.map(r => r.top)), R = Math.max(...rs.map(r => r.right)), B = Math.max(...rs.map(r => r.bottom));
+      const f = b.cloneNode(true); f.classList.add('flyer'); Object.assign(f.style, {left: a.left + 'px', top: a.top + 'px', width: a.width + 'px', animation: 'none'});
+      document.body.append(f);
+      const sx = Math.max(.35, Math.min(1, (R - L) / a.width)), dx = L + (R - L) / 2 - (a.left + a.width * sx / 2), dy = Tp + (B - Tp) / 2 - (a.top + a.height * sx / 2);
+      requestAnimationFrame(() => requestAnimationFrame(() => { f.style.transform = `translate(${dx}px,${dy}px) scale(${sx})`; f.style.opacity = '0'; }));
+      setTimeout(() => f.remove(), 900);
+      b.classList.add('gone');
+    };
+    const play = () => {
+      reset();
+      T.forEach((t, i) => {
+        const base = i * 2900;
+        later(() => { tbox.innerHTML = ''; dots[i].classList.add('on'); bubble('qb', t[0]); }, base);
+        later(() => { bubble('ab', t[1]); }, base + 700);
+        later(() => { const b = tbox.querySelector('.ab'); const els = parts.filter(p => +p.dataset.st === i); if (!reduce) flyTo(b, els); }, base + 1500);
+        later(() => { parts.filter(p => +p.dataset.st === i).forEach(p => p.classList.add('on')); if (i === 0) st.classList.add('h-on'); }, base + 2050);
       });
+      later(() => { re.hidden = false; }, T.length * 2900);
     };
-    set(0);
-    const fit = () => { const b = st.parentElement; if (innerWidth < 861) { b.style.setProperty('--k', (b.clientWidth - 3) / 640); b.style.setProperty('--bh', b.querySelector('.bar').offsetHeight + 'px'); } else b.style.removeProperty('--k'); };
-    let tick = false;
-    const check = () => {
-      tick = false; const line = innerHeight * (innerWidth < 861 ? .72 : .55); let n = 0;
-      steps.forEach(s => { if (s.querySelector('.bub').getBoundingClientRect().top < line) n = +s.dataset.s; });
-      set(n);
-    };
-    addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(check); } }, {passive: true});
-    addEventListener('resize', () => { fit(); check(); });
-    fit(); check();
+    re.addEventListener('click', play);
+    new IntersectionObserver((es, o) => { if (!es[0].isIntersecting) return; o.disconnect(); play(); }, {threshold: .5}).observe(st);
   })();
 })();
 </script>

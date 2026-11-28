@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* ノート改 案1 ヒアリングメモ：手書きノートの構成はそのまま、配色を落ち着かせ、Web事業を主役に（2026-11-28） */
+/* ノート改 案1 ことばとページ：手書きノートの構成はそのまま、配色を落ち着かせ、Web事業を主役に（2026-11-28） */
 :root{
   --ink:#1D3236;       /* ロゴの文字色 */
   --sub:#55636A;
@@ -431,33 +431,35 @@ body.lock{overflow:hidden}
 .bar .url{margin-left:10px;min-width:0;max-width:340px;flex:1;font-size:.72rem;color:var(--sub);background:#fff;border:1px solid var(--rule);border-radius:999px;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stage{position:relative;container-type:inline-size;aspect-ratio:16/10.4;overflow:hidden}
 
-/* ===== 案1 ヒアリングメモ ===== */
-.hear{display:grid;grid-template-columns:minmax(0,380px) 1fr;gap:44px;align-items:start;margin-top:44px}
-.pad{position:relative;background-color:#FCFCF8;background-image:repeating-linear-gradient(transparent 0 35px,#D6DCE0 35px 36px);padding:22px 22px 26px 46px;box-shadow:0 2px 3px rgba(0,0,0,.1),0 14px 28px rgba(20,40,60,.12)}
-.pad::before{content:"";position:absolute;top:0;bottom:0;left:30px;width:1.5px;background:var(--wave);opacity:.6}
-.pad-h{font-family:var(--hand);font-weight:600;color:var(--pen);font-size:1.15rem;line-height:36px;margin-bottom:6px}
-.notes{list-style:none;display:grid;gap:8px}
-.notes button{position:relative;display:block;width:100%;text-align:left;font:600 1.02rem/1.65 var(--hand);color:#33332D;background:none;border:0;border-radius:6px;padding:8px 10px 10px 34px;cursor:pointer;transition:background .25s}
-.notes button small{display:block;font:500 .7rem/1.5 var(--body);color:var(--sub);letter-spacing:.06em}
-.notes button::before{content:"";position:absolute;left:8px;top:16px;width:16px;height:16px;border:1.6px solid #6E747A;border-radius:50%;transition:background .25s,border-color .25s}
-.notes button:hover{background:rgba(255,255,255,.7)}
-.notes button[aria-pressed="true"]{background:linear-gradient(100deg,transparent 1%,var(--marker) 3%,var(--marker) 97%,transparent 99%)}
-.notes button[aria-pressed="true"]::before{background:var(--circle);border-color:var(--circle);box-shadow:inset 0 0 0 3px #fff}
-.notes button:focus-visible{outline:3px dashed var(--pen);outline-offset:2px}
-.ring{position:absolute;z-index:3;left:0;top:0;width:0;height:0;border:2.6px solid var(--circle);border-radius:14px;opacity:0;pointer-events:none;transition:left .6s cubic-bezier(.6,0,.2,1),top .6s cubic-bezier(.6,0,.2,1),width .6s cubic-bezier(.6,0,.2,1),height .6s cubic-bezier(.6,0,.2,1),opacity .3s;box-shadow:0 0 0 9999px rgba(250,250,247,.5)}
-.ring.on{opacity:1}
-.decide{position:relative;margin-top:18px;padding:14px 18px 16px;border-left:3px solid var(--circle);background:rgba(255,255,255,.6)}
-.decide small{display:block;font-size:.74rem;font-weight:700;color:var(--label);letter-spacing:.06em}
-.decide p{font-weight:700;color:var(--pen);line-height:1.75;min-height:3.5em}
+/* ===== 案1 ことばと、ページの場所を線で結ぶ ===== */
+.voice{margin-top:40px}
+.v-legend{display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:.9rem;color:var(--pen);margin-bottom:18px}
+.v-legend svg{width:22px;height:22px;color:var(--circle)}
+.v-legend i{width:56px;height:2px;background:var(--circle);position:relative}
+.v-legend i::after{content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left:8px solid var(--circle);border-right:0}
+.v-frame{position:relative;padding:0 224px}
+.v-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:4}
+.v-lines path{fill:none;stroke:var(--circle);stroke-width:2;stroke-linecap:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset .8s ease}
+.v-lines circle{fill:var(--circle);opacity:0;transition:opacity .3s}
+.voice.in .v-lines path.on{stroke-dashoffset:0}
+.voice.in .v-lines circle.on{opacity:1}
+.vb{position:absolute;z-index:5;width:196px;padding:11px 16px 12px;background:#fff;border:1.8px solid var(--circle);border-radius:18px;font:600 1.02rem/1.55 var(--hand);color:var(--ink);box-shadow:0 6px 16px rgba(20,40,60,.12);opacity:0;scale:.6;transition:opacity .35s,scale .45s cubic-bezier(.3,1.6,.5,1)}
+.vb::before{content:"「";margin-left:-.4em}.vb::after{content:"」"}
+.vb.on{opacity:1;scale:1}
+.stage [data-hit]{outline:2.5px solid transparent;outline-offset:4px;border-radius:6px;transition:outline-color .4s}
+.stage [data-hit].hit{outline-color:var(--circle)}
+@media (max-width:1060px){.v-frame{padding:0 190px}.vb{width:170px;font-size:.95rem}}
 @media (max-width:860px){
-  .hear{grid-template-columns:1fr;gap:18px}
-  .hear-r{order:-1}.stage{aspect-ratio:3/3.7}
-  .pad{padding:16px 0 18px 0;background-image:none;box-shadow:none;background:none}.pad::before{display:none}.pad-h{padding-left:4px}
-  .notes{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 10px;scrollbar-width:thin}
-  .notes li{flex:0 0 76%;scroll-snap-align:start}
-  .notes button{height:100%;background:#FCFCF8;box-shadow:0 1px 2px rgba(0,0,0,.08),0 6px 14px rgba(20,40,60,.1)}
+  .v-frame{padding:0}.v-lines{display:none}
+  .stage{aspect-ratio:3/3.9}
+  .vb{width:auto;max-width:88%;white-space:nowrap;padding:6px 12px 7px;font-size:.86rem;border-radius:14px;box-shadow:0 4px 12px rgba(20,40,60,.2)}
+  .vb::before,.vb::after{content:none}
+  .vb .tail{position:absolute;bottom:-8px;left:18px;border:8px solid transparent;border-top-color:var(--circle);border-bottom:0}
+  .vb.below .tail{bottom:auto;top:-8px;border-top-color:transparent;border-bottom:8px solid var(--circle)}
+  .vb{font-size:.95rem;padding:8px 14px 9px}
+  .stage [data-hit]{outline-color:transparent!important}.stage [data-hit].now{outline-color:var(--circle)!important}
 }
-@media (prefers-reduced-motion:reduce){.ring{transition:none}}
+@media (prefers-reduced-motion:reduce){.vb,.v-lines path,.v-lines circle{transition:none}}
 .review-note{background:#1D3236;color:#EAF1F4;font:500 .8rem var(--body);text-align:center;padding:7px 16px;line-height:1.6}
 </style>
 </head>
@@ -509,14 +511,15 @@ body.lock{overflow:hidden}
       <p class="sec-label rise">WEB</p>
       <h2 class="sec-title rise">お客様のことばから、<br>ページを決めていく。</h2>
       <p class="sec-lead rise">AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成を低コストで提供しています。決まった型にあてはめず、ヒアリングでうかがったことをもとに、オーダーメイドでつくります。</p>
-      <div class="hear" id="hear">
-        <div class="pad">
-          <p class="pad-h">ヒアリングのメモ <span class="sample-tag">見本</span></p>
-          <ol class="notes" id="notes"><li><button type="button" data-t=".s-logo" data-d="店名を左上に大きく置き、どのページでも目に入るようにしました。" aria-pressed="false"><small>お客様のことば</small>「お店の名前を、まず覚えてもらいたい。」</button></li><li><button type="button" data-t=".s-img" data-d="はじめての方がいちばん知りたい「お店の雰囲気」を、写真でいちばん大きく見せました。" aria-pressed="false"><small>お客様のことば</small>「常連さんは多いけれど、はじめての方にも来てほしい。」</button></li><li><button type="button" data-t=".s-copy .s-btn" data-d="予約はLINEで受け付けることにして、ボタンをいちばん目立つ色にしました。" aria-pressed="false"><small>お客様のことば</small>「電話の予約で、手がふさがってしまう。」</button></li><li><button type="button" data-t=".s-cards" data-d="「本日の豆」の欄を、お店の方が自分で書きかえられるようにしました。" aria-pressed="false"><small>お客様のことば</small>「その日の豆を、毎日お知らせしたい。」</button></li></ol>
-        </div>
-        <div class="hear-r">
-          <div class="browser"><div class="bar"><i></i><i></i><i></i><span class="url">komorebi-coffee.jp <span class="sample-tag">見本</span></span></div><div class="stage" id="stage" style="--sbg:#F3F0EA;--sink:#2F2A25;--sac:#6D5340;--simg:radial-gradient(circle at 58% 56%,#F1EBE2 0 11%,#6E4F3A 11.5% 14%,transparent 14.5%),radial-gradient(ellipse 30% 22% at 58% 60%,#E4DACD 0 70%,transparent 72%),radial-gradient(circle at 24% 26%,rgba(255,255,255,.35) 0 9%,transparent 10%),linear-gradient(160deg,#BDA48C,#8C6E57)"><div class="s-in"><div class="s-h" style="--i:0"><b class="s-logo">こもれび珈琲</b><span class="s-nav"><span>メニュー</span><span>お店</span><span>アクセス</span></span><span class="s-btn sm">お問い合わせ</span></div><div class="s-hero"><div class="s-copy" style="--i:2"><small>自家焙煎のコーヒーと焼き菓子</small><strong>朝の一杯を、ゆっくりと。</strong><p class="lines">浅煎りから深煎りまで、その日の豆を一杯ずつ淹れています。</p><span class="s-btn">LINEで予約する</span></div><div class="s-img" style="--i:1"></div></div><div class="s-cards" style="--i:3"><div>本日の豆<span>エチオピア 浅煎り</span></div><div>焼き菓子<span>季節のタルト</span></div><div>営業時間<span>8:00〜18:00</span></div></div></div><span class="ring" id="ring" aria-hidden="true"></span></div></div>
-          <div class="decide" aria-live="polite"><small>だから、こう決めました</small><p id="decide">左のメモを押すと、ページのどこに生かしたかが見られます。</p></div>
+      <div class="voice" id="voice">
+        <p class="v-legend"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H10l-4 4v-4H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span>お客様のことば</span><i aria-hidden="true"></i><span>ページのここに</span></p>
+        <div class="v-frame" id="vframe">
+          <svg class="v-lines" id="vlines" aria-hidden="true"></svg>
+          <div class="browser"><div class="bar"><i></i><i></i><i></i><span class="url">komorebi-coffee.jp <span class="sample-tag">見本</span></span></div><div class="stage" id="stage" style="--sbg:#F3F0EA;--sink:#2F2A25;--sac:#6D5340;--simg:radial-gradient(circle at 58% 56%,#F1EBE2 0 11%,#6E4F3A 11.5% 14%,transparent 14.5%),radial-gradient(ellipse 30% 22% at 58% 60%,#E4DACD 0 70%,transparent 72%),radial-gradient(circle at 24% 26%,rgba(255,255,255,.35) 0 9%,transparent 10%),linear-gradient(160deg,#BDA48C,#8C6E57)"><div class="s-in"><div class="s-h" style="--i:0"><b class="s-logo">こもれび珈琲</b><span class="s-nav"><span>メニュー</span><span>お店</span><span>アクセス</span></span><span class="s-btn sm">お問い合わせ</span></div><div class="s-hero"><div class="s-copy" style="--i:2"><small>自家焙煎のコーヒーと焼き菓子</small><strong>朝の一杯を、ゆっくりと。</strong><p class="lines">浅煎りから深煎りまで、その日の豆を一杯ずつ淹れています。</p><span class="s-btn">LINEで予約する</span></div><div class="s-img" style="--i:1"></div></div><div class="s-cards" style="--i:3"><div>本日の豆<span>エチオピア 浅煎り</span></div><div>焼き菓子<span>季節のタルト</span></div><div>営業時間<span>8:00〜18:00</span></div></div></div></div></div>
+          <p class="vb l" data-t=".s-logo">店の名前を、覚えてほしい</p>
+          <p class="vb l" data-t=".s-copy .s-btn">予約は、LINEで受けたい</p>
+          <p class="vb r" data-t=".s-img">お店の雰囲気を、伝えたい</p>
+          <p class="vb r" data-t=".s-cards">今日の豆を、知らせたい</p>
         </div>
       </div>
       <ul class="svc">
@@ -894,25 +897,58 @@ body.lock{overflow:hidden}
     $('#sent').textContent = 'ありがとうございます。内容を受け付けました（デザイン確認用のページのため、実際には送信されません）。';
   });
 
-  /* ===== 案1：ヒアリングのメモと、ページの決めごとを結ぶ ===== */
+  /* ===== 案1：ことばと、ページの場所を線で結ぶ ===== */
   (() => {
-    const st = $('#stage'), ring = $('#ring'), dec = $('#decide'), bs = $$('#notes button');
-    let cur = -1, auto = null;
-    const place = () => {
-      if (cur < 0) return;
-      const t = st.querySelector(bs[cur].dataset.t), a = st.getBoundingClientRect(), r = t.getBoundingClientRect(), p = 7;
-      Object.assign(ring.style, {left: r.left - a.left - p + 'px', top: r.top - a.top - p + 'px', width: r.width + p * 2 + 'px', height: r.height + p * 2 + 'px'});
+    const box = $('#voice'), fr = $('#vframe'), st = $('#stage'), svg = $('#vlines'), vbs = $$('.vb');
+    vbs.forEach(b => { const t = st.querySelector(b.dataset.t); t.dataset.hit = ''; b._t = t; const tl = document.createElement('span'); tl.className = 'tail'; b.append(tl); });
+    const lay = () => {
+      const F = fr.getBoundingClientRect(), mob = innerWidth < 861; svg.innerHTML = '';
+      const sides = {l: [], r: []};
+      vbs.forEach(b => {
+        const r = b._t.getBoundingClientRect();
+        if (mob) { // スマホ：ことばを、ページのその場所のすぐ上（入らなければ下）に出す
+          const h = b.offsetHeight, up = r.top - F.top - h - 10;
+          b.classList.toggle('below', up < 50);
+          b.style.left = Math.max(6, Math.min(r.left - F.left, F.width - b.offsetWidth - 6)) + 'px';
+          b.style.top = (up < 50 ? r.bottom - F.top + 10 : up) + 'px';
+          return;
+        }
+        sides[b.classList.contains('l') ? 'l' : 'r'].push([b, r]);
+      });
+      if (mob) return;
+      Object.entries(sides).forEach(([s, list]) => {
+        list.sort((a, c) => a[1].top - c[1].top); let floor = 0;
+        list.forEach(([b, r]) => {
+          const h = b.offsetHeight, w = b.offsetWidth;
+          let y = Math.max(r.top + r.height / 2 - F.top - h / 2, floor); floor = y + h + 18;
+          const x = s === 'l' ? 0 : F.width - w;
+          b.style.left = x + 'px'; b.style.top = y + 'px';
+          const x1 = s === 'l' ? x + w : x, y1 = y + h / 2;
+          const x2 = s === 'l' ? r.left - F.left - 8 : r.right - F.left + 8, y2 = r.top - F.top + r.height / 2;
+          const mx = (x1 + x2) / 2;
+          const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          p.setAttribute('d', `M${x1} ${y1}C${mx} ${y1},${mx} ${y2},${x2} ${y2}`);
+          const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); c.setAttribute('cx', x2); c.setAttribute('cy', y2); c.setAttribute('r', 4.5);
+          svg.append(p, c); p.style.setProperty('--len', Math.ceil(p.getTotalLength()));
+          b._p = p; b._c = c; if (b.classList.contains('on')) { p.classList.add('on'); c.classList.add('on'); }
+        });
+      });
     };
-    const pick = i => {
-      cur = i; bs.forEach((b, j) => b.setAttribute('aria-pressed', j === i));
-      ring.classList.add('on'); place(); dec.textContent = bs[i].dataset.d;
-    };
-    bs.forEach((b, i) => b.addEventListener('click', () => { clearInterval(auto); pick(i); }));
-    addEventListener('resize', place);
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(lay, 100); });
+    lay(); addEventListener('load', lay); document.fonts && document.fonts.ready.then(lay);
     new IntersectionObserver((es, o) => {
-      if (!es[0].isIntersecting) return; o.disconnect();
-      pick(0); if (!reduce) auto = setInterval(() => pick((cur + 1) % bs.length), 3800);
-    }, {threshold: .45}).observe(st);
+      if (!es[0].isIntersecting) return; o.disconnect(); box.classList.add('in'); lay();
+      if (innerWidth < 861) { // スマホ：1つずつ順番に（くり返し）
+        let k = 0;
+        const step = () => { vbs.forEach((b, j) => { b.classList.toggle('on', j === k); b._t.classList.toggle('now', j === k); b._t.classList.add('hit'); }); lay(); k = (k + 1) % vbs.length; };
+        step(); if (!reduce) setInterval(step, 2600);
+        return;
+      }
+      vbs.forEach((b, i) => setTimeout(() => {
+        b.classList.add('on'); b._t.classList.add('hit');
+        if (b._p) { b._p.classList.add('on'); b._c.classList.add('on'); }
+      }, reduce ? 0 : 300 + i * 650));
+    }, {threshold: .4}).observe(fr);
   })();
 })();
 </script>
