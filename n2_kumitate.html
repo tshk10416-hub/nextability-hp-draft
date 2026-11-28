@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>株式会社NextAbility｜できることは、増やせる。</title>
-<meta name="description" content="愛知県豊橋市の株式会社NextAbility。東海・関東の軽貨物運送、AIを活用したHP・LP制作、SNS運用、LINE公式アカウント作成、自社開発ボードゲームを使ったお金の講座。">
+<meta name="description" content="愛知県豊橋市の株式会社NextAbility。東海・関東の軽貨物運送、AIを活用したHP・LP制作、SNS運用、LINE公式アカウント作成、ECサイト開設、自社開発ボードゲームを使ったお金の講座。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -386,13 +386,14 @@ body.lock{overflow:hidden}
 .ball.main{width:clamp(116px,25vw,262px)}
 .ball.main .bt{font-size:clamp(1.45rem,4vw,2.9rem)}
 .ball-wrap.main .ball-sum{color:var(--ink);font-weight:700}
-.svc{position:relative;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);margin-top:52px}
-.svc::before{content:"";position:absolute;inset:0;border-top:1.6px solid var(--ink);border-bottom:1.6px solid var(--ink);pointer-events:none}
+.svc{position:relative;list-style:none;display:grid;grid-template-columns:repeat(5,1fr);margin-top:52px}
+.svc::before{content:"";position:absolute;inset:0;grid-column:1/-1;grid-row:1/span 6;border-top:1.6px solid var(--ink);border-bottom:1.6px solid var(--ink);pointer-events:none}
 .svc li{padding:18px 20px 20px;border-right:1px dashed rgba(29,50,54,.35)}
 .svc li:last-child{border-right:0}
 .svc b{display:block;font-weight:900;color:var(--pen);font-size:1.05rem;line-height:1.5;margin-bottom:6px}
 .svc span{display:block;font-size:.9rem;color:var(--sub);line-height:1.75}
-@media (max-width:860px){.svc{grid-template-columns:1fr 1fr}.svc li:nth-child(2){border-right:0}.svc li:nth-child(-n+2){border-bottom:1px dashed rgba(29,50,54,.35)}}
+@media (max-width:1000px){.svc{grid-template-columns:repeat(6,1fr)}.svc li{grid-column:span 2}.svc li:nth-child(n+4){grid-column:span 3}.svc li:nth-child(3){border-right:0}.svc li:nth-child(-n+3){border-bottom:1px dashed rgba(29,50,54,.35)}}
+@media (max-width:860px){.svc{grid-template-columns:1fr 1fr}.svc li,.svc li:nth-child(n+4){grid-column:auto;border-right:1px dashed rgba(29,50,54,.35)}.svc li:nth-child(2n){border-right:0}.svc li:nth-child(-n+4){border-bottom:1px dashed rgba(29,50,54,.35)}.svc li:last-child{grid-column:1/-1;border-right:0}}
 @media (max-width:480px){.svc{grid-template-columns:1fr}.svc li{border-right:0;padding:14px 4px 16px}.svc li:not(:last-child){border-bottom:1px dashed rgba(29,50,54,.35)}}
 .web-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:28px}
 .web-cta p{font-size:.88rem;color:var(--sub)}
@@ -486,7 +487,7 @@ body.lock{overflow:hidden}
       <div class="hero">
         <div class="rise">
           <h1><span style="white-space:nowrap">できることは、</span><br><span class="circled">増やせる。<svg class="draw" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><path style="--len:900" d="M36 16 C 120 0, 268 4, 290 50 C 302 90, 205 116, 122 112 C 42 108, 4 88, 8 58 C 12 30, 66 12, 150 10" stroke-width="3"/></svg></span></h1>
-          <p class="lead"><b>株式会社NextAbility</b>は、<b>AIを活用した低コストのHP・LP制作、SNS運用、LINE公式アカウント作成</b>を中心に、<b>東海・関東の軽貨物運送</b>、<b>自社開発のボードゲームを使ったお金の講座</b>を行っています。それぞれの仕事を通して、お客様の仕事と、ここで働く一人ひとりの「できる」を増やしています。</p>
+          <p class="lead"><b>株式会社NextAbility</b>は、<b>AIを活用した低コストのHP・LP制作、SNS運用、LINE公式アカウント作成、ECサイト開設</b>を中心に、<b>東海・関東の軽貨物運送</b>、<b>自社開発のボードゲームを使ったお金の講座</b>を行っています。それぞれの仕事を通して、お客様の仕事と、ここで働く一人ひとりの「できる」を増やしています。</p>
           <span class="memo">NextAbility ＝「次の力」</span>
           <div class="hero-cta"><a class="btn" href="#web">Web制作を見る</a><a class="btn line" href="#contact" data-pick="web">HP・SNSを相談する</a></div>
         </div>
@@ -508,7 +509,7 @@ body.lock{overflow:hidden}
     <div class="wrap">
       <p class="sec-label rise">WEB</p>
       <h2 class="sec-title rise">聞いたことが、<br>そのままページになる。</h2>
-      <p class="sec-lead rise">AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成を低コストで提供しています。決まった型にあてはめず、ヒアリングでうかがったことをもとに、オーダーメイドでつくります。</p>
+      <p class="sec-lead rise">AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成、ECサイトの開設を低コストで提供しています。決まった型にあてはめず、ヒアリングでうかがったことをもとに、オーダーメイドでつくります。</p>
       <div class="fly" id="fly">
         <div class="talk" id="talk" aria-live="polite">
           <div class="t-dots" id="tdots"><i></i><i></i><i></i><i></i></div>
@@ -522,8 +523,9 @@ body.lock{overflow:hidden}
         <li><b>LP制作</b><span>ひとつの商品やサービスを伝える、1枚のページ。</span></li>
         <li><b>SNSの導入・運用</b><span>アカウントの開設から、投稿の運用まで。</span></li>
         <li><b>LINE公式アカウントの作成</b><span>お客様へのお知らせや、やりとりの窓口に。</span></li>
+        <li><b>ECサイトの開設</b><span>商品をネットで販売できる、自社のお店に。</span></li>
       </ul>
-      <div class="web-cta"><p>導入事例は、ここに掲載予定です。</p><a class="btn" href="#contact" data-pick="web">HP・SNS・LINEについて相談する</a></div>
+      <div class="web-cta"><p>導入事例は、ここに掲載予定です。</p><a class="btn" href="#contact" data-pick="web">HP・SNS・LINE・ECについて相談する</a></div>
     </div>
   </section>
 
@@ -543,10 +545,10 @@ body.lock{overflow:hidden}
         </div>
         <div class="ball-wrap main">
           <button class="ball main" style="--c:var(--b-web);--fg:#fff;--d:0s" aria-haspopup="dialog" aria-controls="sheet-web">
-            <span class="bn">HP・SNS・LINE</span><span class="bt">つくる</span>
+            <span class="bn">Web制作</span><span class="bt">つくる</span>
           </button>
           <span class="floor" style="--d:0s"></span>
-          <p class="ball-sum">AIを活用して、HP・SNS・LINEを低コストに。</p>
+          <p class="ball-sum">AIを活用して、HP・SNS・LINE・ECを低コストに。</p>
         </div>
         <div class="ball-wrap">
           <button class="ball" style="--c:var(--b-fp);--fg:#1D3236;--d:-2.2s" aria-haspopup="dialog" aria-controls="sheet-fp">
@@ -665,7 +667,7 @@ body.lock{overflow:hidden}
           <fieldset>
             <legend>ご相談の内容（複数可）</legend>
             <label class="chk"><input type="checkbox" name="type" value="unso"> 運送について</label>
-            <label class="chk"><input type="checkbox" name="type" value="web"> HP・SNS・LINEについて</label>
+            <label class="chk"><input type="checkbox" name="type" value="web"> HP・SNS・LINE・ECについて</label>
             <label class="chk"><input type="checkbox" name="type" value="fp"> 講座・イベントについて</label>
             <label class="chk"><input type="checkbox" name="type" value="recruit"> 採用について</label>
           </fieldset>
@@ -718,14 +720,14 @@ body.lock{overflow:hidden}
       <div class="biz">
         <figure><div class="ph"></div><figcaption class="cap">写真：制作中の画面と打ち合わせ（撮影予定）</figcaption></figure>
         <div>
-          <h3>AIを活用して、HP・LP・SNS・<br>LINE公式アカウントを低コストに。</h3>
-          <p>AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成を低コストで提供しています。企業様・個人事業主様の業務効率化と事業の発展を支えます。</p>
+          <h3>AIを活用して、HP・LP・SNS・<br>LINE公式アカウント・ECサイトを低コストに。</h3>
+          <p>AI技術を活用することで、HP・LPの制作、SNSの導入・運用、LINE公式アカウントの作成、ECサイトの開設を低コストで提供しています。企業様・個人事業主様の業務効率化と事業の発展を支えます。</p>
           <dl class="spec">
-            <dt>できること</dt><dd>HP・LP制作／SNSの導入・運用／LINE公式アカウントの作成</dd>
+            <dt>できること</dt><dd>HP・LP制作／SNSの導入・運用／LINE公式アカウントの作成／ECサイトの開設</dd>
             <dt>対象</dt><dd>企業様・個人事業主様</dd>
           </dl>
           <p class="case">導入事例と導入のメリットを、ここに掲載予定です。</p>
-          <a class="btn" href="#contact" data-pick="web">HP・SNS・LINEについて相談する</a>
+          <a class="btn" href="#contact" data-pick="web">HP・SNS・LINE・ECについて相談する</a>
         </div>
       </div>
     </div>
